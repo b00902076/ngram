@@ -5,8 +5,6 @@
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
     wofstream index_file(_INDEX_FILENAME);
     for(auto &[key, values]:index){
-        // wstring key = kv_pair.first;
-        // auto &values = kv_pair.second;
         index_file << key << L" ";
         int sz=values.size(), i=0;
         for(auto &row_pos:values){
