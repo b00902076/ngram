@@ -34,20 +34,19 @@ void load_csv(vector<vector<wstring>> &csv){
     while(getline(source_csv, line)){
         vector<wstring> record;
         for(auto &wc:line){
-            // 
-            if(record.size()==8 && wc==left_p)  between_parentheses = true;
-            if(record.size()==8 && wc==right_p)  between_parentheses = false;
+            if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
+            if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==right_p)  between_parentheses = false;
             
             if(wc==delim){
                 record.emplace_back(cell);
                 cell=L"";
-                if(record.size()==9 && merge_mode)  break;
-                if(record.size()==8 && between_parentheses) merge_mode=true;
+                if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3+1 && merge_mode)  break;
+                if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && between_parentheses) merge_mode=true;
             }
             else    cell += wc;
         }
         if(merge_mode){
-            merge_prev_record(csv, record, {5,8});
+            merge_prev_record(csv, record, {_CSV_COLUMN_INDEX_ADDRESS_3_PHONETIC,_CSV_COLUMN_INDEX_ADDRESS_3});
             merge_mode = false;
         }
         else{

@@ -1,4 +1,3 @@
-// #define WINVER		_WIN32_WINNT_WIN7
 #include <bits/stdc++.h>
 #include <locale>
 
@@ -19,8 +18,6 @@
 #define _SEARCH_RESULT_FILENAME "search_result"
 
 using namespace std;
-// void print_row(vector<vector<wstring>> &csv, int &row);
-// void generate_concatened_csv(vector<vector<wstring>> &csv);
 bool avalible_key(wstring &key, unordered_set<wchar_t> &skip_wc);
 void load_csv(vector<vector<wstring>> &csv);
 void load_record(vector<wstring> &records);

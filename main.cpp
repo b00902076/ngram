@@ -1,7 +1,7 @@
 #include "common.h"
 // constrains:
-// - english filename for input csv (unicode in pathname is ok)
-// - win32/64 japanese Win10
+// - english filename for input csv
+// - Windows10
 
 int main(){
     #if defined(_WIN32) || defined(__WIN32__)
