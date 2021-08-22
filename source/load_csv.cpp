@@ -24,15 +24,17 @@ void merge_prev_record(vector<vector<wstring>> &csv, vector<wstring> &record, ve
 }
 
 void load_csv(vector<vector<wstring>> &csv){
-    wifstream source_csv;
+    wifstream source_csv(_CSV_SOURCE_FILENAME);
     bool between_parentheses=false, merge_mode=false;
     int line_count=0;
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring line, cell=L"";
 
-    source_csv.open(_CSV_SOURCE_FILENAME);
+    // FIXME: wild char issue on linux
     while(getline(source_csv, line)){
         vector<wstring> record;
+        wcout << "lineLen= " << line.size() << endl;
+        wcout << line << endl;
         for(auto &wc:line){
             if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
             if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==right_p)  between_parentheses = false;

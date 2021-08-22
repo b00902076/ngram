@@ -14,7 +14,7 @@ $ g++ .\load_csv.cpp .\build_index.cpp .\main.cpp .\load_record.cpp .\load_index
 On linux:
 ```
 $ cd ./source
-$ g++ ./load_csv.cpp ./build_index.cpp ./main.cpp ./load_record.cpp ./load_index.cpp ./search.cpp ./utils.cpp -o main.exe
+$ g++ ./load_csv.cpp ./build_index.cpp ./main.cpp ./load_record.cpp ./load_index.cpp ./search.cpp ./utils.cpp -o main.exe -std=c++17
 ```
 
 ## How to run

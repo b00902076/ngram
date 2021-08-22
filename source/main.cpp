@@ -13,6 +13,7 @@ int main(){
     unordered_map<wstring, unordered_set<int>> index;
     
     // load source file and perform concatenation
+    // TODO: seperate loading & concatenating part
     load_csv(csv);
     // load concatened records for quick output
     load_record(records);
