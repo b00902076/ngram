@@ -1,9 +1,9 @@
 # ngram
 Japanese address search engine based on n-gram algorithm
 
-## Environment
+## Environment & Requirement
 - OS: Windows 10
-- Compiler: gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)
+- Compiler: gcc version 9.0.0+
 
 ## How to compile
 ```
