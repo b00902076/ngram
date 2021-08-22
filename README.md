@@ -3,7 +3,7 @@ Japanese address search engine based on n-gram algorithm
 
 ## Environment & Requirement
 - OS: Windows 10
-- Compiler: gcc version 9.0.0+
+- Compiler: gcc version 9.0.0+ (*1)
 
 ## How to compile
 ```
@@ -19,3 +19,6 @@ or just double-click .exe file on the GUI
 
 ## How it works
 main algorithm: n-gram (n=2 by default)
+
+(*1) g++ compiler(8.x.x) has bug with `fcntl.h`.
+ref: https://sourceforge.net/p/mingw-w64/bugs/737/
