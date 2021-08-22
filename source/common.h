@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 #include <locale>
+#include <fcntl.h>
 
 #if defined(_WIN32) || defined(__WIN32__)
-#include <fcntl.h>
 #endif
 
 #define N 2 // for N-gram
