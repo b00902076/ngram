@@ -4,6 +4,7 @@
 // output encoding: shift-jis
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
     wofstream index_file(_INDEX_FILENAME);
+    index_file.imbue(locale("C.UTF-8"));
     for(auto &[key, values]:index){
         index_file << key << L" ";
         int sz=values.size(), i=0;

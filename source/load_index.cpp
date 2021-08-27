@@ -3,6 +3,7 @@
 // load index file from the generated one
 void load_index(unordered_map<wstring, unordered_set<int>> &index){
     wifstream index_file(_INDEX_FILENAME);
+    index_file.imbue(locale("C.UTF-8"));
     wstring line, key, idx;
     while(getline(index_file, line)){
         wstringstream line_stream(line);

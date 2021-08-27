@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 #include <locale>
-
-#if defined(_WIN32) || defined(__WIN32__)
 #include <fcntl.h>
-#endif
 
 #define N 2 // for N-gram
 #define _CSV_COLUMN_INDEX_ADDRESS_1_PHONETIC 3
@@ -17,6 +14,7 @@
 #define _INDEX_FILENAME "index_file"
 #define _SEARCH_RESULT_FILENAME "search_result"
 
+// TODO: set makefile
 using namespace std;
 bool avalible_key(wstring &key, unordered_set<wchar_t> &skip_wc);
 void load_csv(vector<vector<wstring>> &csv);

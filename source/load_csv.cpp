@@ -2,6 +2,7 @@
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
     wofstream concatened_csv(_CSV_CONCATENED_FILENAME);
+    concatened_csv.imbue(locale("C.UTF-8"));
     for(auto &row:csv){
         for(int i=0; i<row.size(); i++){
             concatened_csv << row[i];
@@ -24,13 +25,13 @@ void merge_prev_record(vector<vector<wstring>> &csv, vector<wstring> &record, ve
 }
 
 void load_csv(vector<vector<wstring>> &csv){
-    wifstream source_csv;
+    wifstream source_csv(_CSV_SOURCE_FILENAME);
+    source_csv.imbue(locale("C.UTF-8"));
     bool between_parentheses=false, merge_mode=false;
     int line_count=0;
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring line, cell=L"";
 
-    source_csv.open(_CSV_SOURCE_FILENAME);
     while(getline(source_csv, line)){
         vector<wstring> record;
         for(auto &wc:line){
