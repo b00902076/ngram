@@ -17,6 +17,3 @@ $ ./main.exe
 
 ## How it works
 main algorithm: n-gram (n=2 by default)
-
-(*1) g++ compiler(8.x.x) has bug with `fcntl.h`.
-ref: https://sourceforge.net/p/mingw-w64/bugs/737/
