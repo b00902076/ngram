@@ -4,6 +4,8 @@
 // - source file with utf-8 encoding, LF as new line
 
 int main(){
+    // TODO: add excuting time measure
+    // TODO: support args
     // without this line, wcout's locale will be bind to cout
     ios_base::sync_with_stdio(false);
     wcin.imbue(locale("C.UTF-8"));
@@ -21,6 +23,7 @@ int main(){
     // build index and store at local
     build_index(csv);
     // load index file from the generated one
+    // TODO: deprecate interaction mode(wcin)
     load_index(index);
     // search
     search(index, records);
