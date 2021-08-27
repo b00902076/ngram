@@ -48,11 +48,12 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
 
         if(save_to_file==L"y"){
             wofstream search_result(_SEARCH_RESULT_FILENAME);
+            search_result.imbue(locale("C.UTF-8"));
             for(auto &[record_id, hit_count]: results_sort)
                 search_result << records[record_id] << endl;
             search_result.close();
             wcout << L"計 " << results_sort.size();
-            wcout << L" 件の検索結果を「.\\search_result」にて確認できます。（エンコード：shift-JIS）" << endl;
+            wcout << L" 件の検索結果を「.\\search_result」にて確認できます。" << endl;
         }
         else{
             for(auto &[record_id, hit_count]: results_sort)
