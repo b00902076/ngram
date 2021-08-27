@@ -32,11 +32,8 @@ void load_csv(vector<vector<wstring>> &csv){
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring line, cell=L"";
 
-    // FIXME: wide char issue on linux
     while(getline(source_csv, line)){
         vector<wstring> record;
-        // wcout << L"lineLen= " << line.size() << endl;
-        // wcout << line << endl;
         for(auto &wc:line){
             if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
             if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==right_p)  between_parentheses = false;

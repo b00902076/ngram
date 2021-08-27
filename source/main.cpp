@@ -1,6 +1,5 @@
 #include "common.h"
 // constrains:
-// - english filename for input csv
 // - linux
 // - source file with utf-8 encoding, LF as new line
 
