@@ -21,4 +21,4 @@ void load_csv(vector<vector<wstring>> &csv);
 void load_record(vector<wstring> &records);
 void build_index(vector<vector<wstring>> &csv);
 void load_index(unordered_map<wstring, unordered_set<int>> &index);
-void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records);
+void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records, unordered_set<string> &args);
