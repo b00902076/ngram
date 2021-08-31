@@ -2,7 +2,7 @@
 Japanese address search engine based on n-gram algorithm
 
 ## Environment & Requirement
-- OS: linux
+- OS: linux 
 
 ## How to compile
 ```
