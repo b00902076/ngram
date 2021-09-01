@@ -50,12 +50,11 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         for(auto &[record_id, hit_count]: results_sort)
             search_result << records[record_id] << endl;
         search_result.close();
-        if(silent_mode){
-            wcout.clear();
-            wcout << L"計 " << results_sort.size();
-            wcout << L" 件の検索結果を「.\\search_result」にて確認できます。" << endl;
-            wcout.setstate(ios_base::failbit);
-        }
+        
+        if(silent_mode)     wcout.clear();
+        wcout << L"計 " << results_sort.size();
+        wcout << L" 件の検索結果を「.\\search_result」にて確認できます。" << endl;
+        if(silent_mode)     wcout.setstate(ios_base::failbit);
         
         wcout << L"検索キーワードを入力（終了したい場合はexitを入力）：";
     }
