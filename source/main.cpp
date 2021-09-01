@@ -7,11 +7,14 @@ int main(int argc, char *argv[]){
     // TODO: add excuting time measure
     unordered_set<string> args;
     for(int i=1; i<argc; i++)   args.emplace(argv[i]);
-
+    #if defined(_WIN32) || defined(__WIN32__)
+    _setmode(_fileno(stdout), _O_WTEXT);
+    #elif __linux__
     // without this line, wcout's locale will be bind to cout
     ios_base::sync_with_stdio(false);
     wcin.imbue(locale("C.UTF-8"));
     wcout.imbue(locale("C.UTF-8"));
+    #endif
 
     vector<vector<wstring>> csv;
     vector<wstring> records;
