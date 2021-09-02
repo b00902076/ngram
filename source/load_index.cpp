@@ -2,11 +2,23 @@
 
 // load index file from the generated one
 void load_index(unordered_map<wstring, unordered_set<int>> &index){
-    wifstream index_file(_INDEX_FILENAME);
-    index_file.imbue(locale("C.UTF-8"));
-    wstring line, key, idx;
+    #if defined(_WIN32) || defined(__WIN32__)
+    ifstream index_file(_INDEX_FILENAME, ios_base::binary);
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    string line;
     while(getline(index_file, line)){
-        wstringstream line_stream(line);
+    #elif __linux__
+    wifstream index_file(_INDEX_FILENAME, ios_base::binary);
+    index_file.imbue(locale("C.UTF-8"));
+    wstring wline;
+    while(getline(index_file, wline)){
+    #endif
+        #if defined(_WIN32) || defined(__WIN32__)
+        wstring wline = converter.from_bytes(line);
+        #endif
+        
+        wstringstream line_stream(wline);
+        wstring key, idx;
         getline(line_stream, key, L' ');
         while(getline(line_stream, idx, L' ')){
             index[key].emplace(stoi(idx));

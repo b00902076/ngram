@@ -1,17 +1,28 @@
 #include "common.h"
 
 // store index content as file
-// output encoding: shift-jis
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
-    wofstream index_file(_INDEX_FILENAME);
+    #if defined(_WIN32) || defined(__WIN32__)
+    ofstream index_file(_INDEX_FILENAME, ios_base::binary);
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    char space=' ', new_line='\n';
+    #elif __linux__
+    wofstream index_file(_INDEX_FILENAME, ios_base::binary);
     index_file.imbue(locale("C.UTF-8"));
+    wchar_t space=L' ', new_line=L'\n';
+    #endif
+
     for(auto &[key, values]:index){
-        index_file << key << L" ";
-        int sz=values.size(), i=0;
-        for(auto &row_pos:values){
-            index_file << row_pos;
-            if(i<sz-1)  index_file << L" ";
-            else        index_file << endl;
+        index_file
+        #if defined(_WIN32) || defined(__WIN32__)
+            << converter.to_bytes(key)
+        #elif __linux__
+            << key
+        #endif
+            << space;
+        int i=0;
+        for(auto &doc:values){
+            index_file << doc << (i==values.size()-1? new_line:space);
             i++;
         }
     }
@@ -30,8 +41,8 @@ void build_index(vector<vector<wstring>> &csv){
         vector<wstring> &row = csv[row_pos];
         for(auto &col_pos:target_columns){
             wstring &col = row[col_pos];
-            for(int i=1; i<col.size()-N; i++){
-                wstring key = col.substr(i,N);
+            for(int i=1; i<col.size()-_N_GRAM_LENGTH; i++){
+                wstring key = col.substr(i,_N_GRAM_LENGTH);
                 if(avalible_key(key, skip_wc))  index[key].emplace(row_pos);
             }
         }
