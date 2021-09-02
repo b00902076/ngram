@@ -55,12 +55,12 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     while(ReadConsoleW(hInput, buffer, sizeof(buffer), &inputsRead, &conReadControl)){
         line = wstring(buffer, inputsRead-2); // -2 for stripping L'\r' and L'\n'
 
-    #elif __LINUX__
+    #elif __linux__
     while(getline(wcin, line)){
     #endif
         results_raw.clear();
         results.clear();
-        if(line == L"exit") break;
+        if(line == L"EXIT") break;
         if(line.size()==0){
             wcout << _GUIDE_MESSAGE;
             continue;
