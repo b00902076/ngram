@@ -1,6 +1,5 @@
 #include "common.h"
 // constrains:
-// - linux
 // - source file with utf-8 encoding, LF as new line
 
 int main(int argc, char *argv[]){
