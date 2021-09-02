@@ -41,8 +41,8 @@ void build_index(vector<vector<wstring>> &csv){
         vector<wstring> &row = csv[row_pos];
         for(auto &col_pos:target_columns){
             wstring &col = row[col_pos];
-            for(int i=1; i<col.size()-N; i++){
-                wstring key = col.substr(i,N);
+            for(int i=1; i<col.size()-_N_GRAM_LENGTH; i++){
+                wstring key = col.substr(i,_N_GRAM_LENGTH);
                 if(avalible_key(key, skip_wc))  index[key].emplace(row_pos);
             }
         }
