@@ -33,5 +33,5 @@ $ .\main.exe [-m=s | --mode=silent] [-s=h | --sort=hit] [-s=i | --sort=id]
 ## How it works
 main algorithm: n-gram (n=2 by default)
 
-(*1) Mingw g++ compiler(8.x.x) has bug in `fcntl.h`, which causes fatal error during compiling.
+(*1) Mingw g++ compiler(8.x.x) has bug in `fcntl.h`, which causes fatal error during compiling.<br>
 ref: https://sourceforge.net/p/mingw-w64/bugs/737/
