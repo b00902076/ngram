@@ -1,5 +1,6 @@
 # ngram
-Japanese address search engine based on n-gram algorithm
+Japanese address search engine based on n-gram algorithm.<br>
+Supported on BOTH Linux and Windows platform.
 
 ## Environment & Requirement
 - OS: Linux / Windows 10
@@ -7,26 +8,18 @@ Japanese address search engine based on n-gram algorithm
   - Linux: gcc 7.3.1-13 (Red-Hat)
   - Windows: gcc 9.0.0+ (Mingw) (*1)
 
-## How to compile
+## How to compile & run
 On Linux:
 ```
 $ cd ./source
-$ g++ ./load_csv.cpp ./build_index.cpp ./main.cpp ./load_record.cpp ./load_index.cpp ./search.cpp ./utils.cpp -o main.exe -std=c++17
+$ make
+$ ./ngram [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
 On Windows:
 ```
 $ cd .\source
-$ g++ .\load_csv.cpp .\build_index.cpp .\main.cpp .\load_record.cpp .\load_index.cpp .\search.cpp .\utils.cpp -o main.exe -std=c++17
-```
-
-## How to run
-On Linux:
-```
-$ ./main.exe [-m=s | --mode=silent] [-s=h | --sort=hit] [-s=i | --sort=id]
-```
-On Windows:
-```
-$ .\main.exe [-m=s | --mode=silent] [-s=h | --sort=hit] [-s=i | --sort=id]
+$ g++ .\load_csv.cpp .\build_index.cpp .\main.cpp .\load_record.cpp .\load_index.cpp .\search.cpp .\utils.cpp -o ngram.exe -std=c++17
+$ .\ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
 (or just double-click .exe file on the GUI)
 

@@ -11,7 +11,7 @@ void generate_concatened_csv(vector<vector<wstring>> &csv){
         }
     }
     #elif __linux__
-    wofstream concatened_csv(_CSV_CONCATENED_FILENAME);
+    wofstream concatened_csv(_CSV_CONCATENED_PATH);
     concatened_csv.imbue(locale("C.UTF-8"));
     for(auto &row:csv){
         for(int i=0; i<row.size(); i++){
