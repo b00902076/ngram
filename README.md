@@ -2,7 +2,7 @@
 Japanese address search engine based on n-gram algorithm.<br>
 Supported on BOTH Linux and Windows platform.
 
-## Environment & Requirement
+## Requirements
 - OS: Linux / Windows 10
 - Compiler
   - Linux: gcc 7.3.1-13 (Red-Hat)
