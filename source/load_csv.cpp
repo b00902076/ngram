@@ -1,8 +1,9 @@
-#include "common.h"
+#include "headers/load_csv.hpp"
+#include "headers/constants.hpp"
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
     #if defined(_WIN32) || defined(__WIN32__)
-    ofstream concatened_csv(_CSV_CONCATENED_FILENAME, ios_base::binary);
+    ofstream concatened_csv(_CSV_CONCATENED_PATH, ios_base::binary);
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     for(auto &row:csv){
         for(int i=0; i<row.size(); i++){
@@ -39,14 +40,14 @@ void load_csv(vector<vector<wstring>> &csv){
     vector<wstring> record;
 
     #if defined(_WIN32) || defined(__WIN32__)
-    ifstream source_csv(_CSV_SOURCE_FILENAME);
+    ifstream source_csv(_CSV_SOURCE_PATH);
     // TODO: use ICU(or maybe boost) to convert utf8 string to wstring.
     // Note: The header <codecvt> is unrecommand since c++17 due to the ambiguous implementation,
     // and its improper error handling when reading file in unexpected code point.
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     string line;
     #elif __linux__
-    wifstream source_csv(_CSV_SOURCE_FILENAME);
+    wifstream source_csv(_CSV_SOURCE_PATH);
     source_csv.imbue(locale("C.UTF-8"));
     #endif
 

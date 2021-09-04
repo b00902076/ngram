@@ -2,6 +2,8 @@
 *.exe
 *.csv
 *.CSV
+!KEN_ALL.CSV
+*.o
 index_file
 search_result
 test*

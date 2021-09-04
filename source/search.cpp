@@ -1,4 +1,5 @@
-#include "common.h"
+#include "headers/search.hpp"
+#include "headers/utils.hpp"
 
 auto sort_by_hits_comp = [](pair<int,int> &pa, pair<int,int> &pb){
     auto &[record_id_a, hit_count_a] = pa;
@@ -15,13 +16,13 @@ auto sort_by_record_id_comp = [](pair<int,int> &pa, pair<int,int> &pb){
 
 void output_search_result(vector<wstring> &records, vector<pair<int,int>> &results){
     #if defined(_WIN32) || defined(__WIN32__)
-    ofstream search_result(_SEARCH_RESULT_FILENAME, ios_base::binary);
+    ofstream search_result(_SEARCH_RESULT_PATH, ios_base::binary);
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     for(auto &[record_id, hit_count]: results)
         search_result << converter.to_bytes(records[record_id]) << endl;
 
     #elif __linux__
-    wofstream search_result(_SEARCH_RESULT_FILENAME, ios_base::binary);
+    wofstream search_result(_SEARCH_RESULT_PATH, ios_base::binary);
     search_result.imbue(locale("C.UTF-8"));
     for(auto &[record_id, hit_count]: results)
         search_result << records[record_id] << endl;

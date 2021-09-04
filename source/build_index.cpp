@@ -1,13 +1,14 @@
-#include "common.h"
+#include "headers/build_index.hpp"
+#include "headers/utils.hpp"
 
 // store index content as file
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
     #if defined(_WIN32) || defined(__WIN32__)
-    ofstream index_file(_INDEX_FILENAME, ios_base::binary);
+    ofstream index_file(_INDEX_PATH, ios_base::binary);
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     char space=' ', new_line='\n';
     #elif __linux__
-    wofstream index_file(_INDEX_FILENAME, ios_base::binary);
+    wofstream index_file(_INDEX_PATH, ios_base::binary);
     index_file.imbue(locale("C.UTF-8"));
     wchar_t space=L' ', new_line=L'\n';
     #endif
