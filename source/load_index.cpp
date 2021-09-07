@@ -25,7 +25,7 @@ void load_index(unordered_map<wstring, unordered_set<int>> &index){
             index[key].emplace(stoi(idx));
         }
     }
-    wcout << L"Loaded index from local file with " << index.size() << L" keys." << endl;
+    wcout << L"Loaded index from local file with " << int_size(index) << L" keys." << endl;
     index_file.close();
     return;
 }

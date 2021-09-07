@@ -18,7 +18,7 @@ void load_record(vector<wstring> &records){
     while(getline(concatened_csv, line))
         records.emplace_back(line);
     #endif
-    wcout << L"Loaded " << records.size() << " records." <<endl;
+    wcout << L"Loaded " << int_size(records) << " records." <<endl;
     concatened_csv.close();
     return;
 }
