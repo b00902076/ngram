@@ -5,7 +5,7 @@ Supported on both Linux and Windows platform.
 ## Requirements
 - OS: Linux / Windows 10
 - Compiler
-  - Linux: gcc 7.3.1-13 (Red-Hat)
+  - Linux: gcc 7.3.1 (Red-Hat)
   - Windows: gcc 9.0.0+ (Mingw) (*1)
 
 ## How to compile & run
