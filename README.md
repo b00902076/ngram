@@ -1,6 +1,6 @@
 # ngram
 Japanese address search engine based on n-gram algorithm.<br>
-Supported on both Linux and Windows platform.<br>
+Supported on both Linux and Windows platform.<br><br>
 
 ## Requirements
 - OS: Linux / Windows 10
