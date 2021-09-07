@@ -1,11 +1,11 @@
 # ngram
 Japanese address search engine based on n-gram algorithm.<br>
-Supported on BOTH Linux and Windows platform.
+Supported on both Linux and Windows platform.<br><br>
 
 ## Requirements
 - OS: Linux / Windows 10
 - Compiler
-  - Linux: gcc 7.3.1-13 (Red-Hat)
+  - Linux: gcc 7.3.1 (Red-Hat)
   - Windows: gcc 9.0.0+ (Mingw) (*1)
 
 ## How to compile & run
