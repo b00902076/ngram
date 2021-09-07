@@ -4,6 +4,7 @@
 
 int main(int argc, char *argv[]){
     // TODO: add excuting time measure
+    // TODO: initiallizer
     unordered_set<string> args;
     for(int i=1; i<argc; i++)   args.emplace(argv[i]);
     #if defined(_WIN32) || defined(__WIN32__)
