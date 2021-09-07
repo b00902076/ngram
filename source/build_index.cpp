@@ -1,5 +1,5 @@
 #include "headers/build_index.hpp"
-#include "headers/utils.hpp"
+#include "components/utils/utils.hpp"
 
 // store index content as file
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
@@ -44,7 +44,7 @@ void build_index(vector<vector<wstring>> &csv){
             wstring &col = row[col_pos];
             for(int i=1; i<col.size()-_N_GRAM_LENGTH; i++){
                 wstring key = col.substr(i,_N_GRAM_LENGTH);
-                if(avalible_key(key, skip_wc))  index[key].emplace(row_pos);
+                if(Utils::avalible_key(key, skip_wc))  index[key].emplace(row_pos);
             }
         }
     }

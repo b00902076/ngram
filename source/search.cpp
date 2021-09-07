@@ -1,5 +1,5 @@
 #include "headers/search.hpp"
-#include "headers/utils.hpp"
+#include "components/utils/utils.hpp"
 
 auto sort_by_hits_comp = [](pair<int,int> &pa, pair<int,int> &pb){
     auto &[record_id_a, hit_count_a] = pa;
@@ -69,7 +69,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
 
         for(int i=0; i<line.size()-(_N_GRAM_LENGTH-1); i++){
             wstring key = line.substr(i,_N_GRAM_LENGTH);
-            if(index.count(key)>0 && avalible_key(key, skip_wc)){
+            if(index.count(key)>0 && Utils::avalible_key(key, skip_wc)){
                 for(auto value:index[key])  results_raw[value]++;
             }
         }

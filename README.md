@@ -18,7 +18,7 @@ $ ./ngram [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 On Windows:
 ```
 $ cd .\source
-$ g++ .\load_csv.cpp .\build_index.cpp .\main.cpp .\load_record.cpp .\load_index.cpp .\search.cpp .\utils.cpp -o ngram.exe -std=c++17
+$ g++ .\load_csv.cpp .\build_index.cpp .\main.cpp .\load_record.cpp .\load_index.cpp .\search.cpp .\components\utils\utils.cpp -o ngram.exe -std=c++17
 $ .\ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
 (or just double-click .exe file on the GUI)
