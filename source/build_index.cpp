@@ -23,11 +23,11 @@ void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
             << space;
         int i=0;
         for(auto &doc:values){
-            index_file << doc << (i==values.size()-1? new_line:space);
+            index_file << doc << (i==int_size(values)-1? new_line:space);
             i++;
         }
     }
-    wcout << L"Generated index file with " << index.size() << L" keys." << endl;
+    wcout << L"Generated index file with " << int_size(index) << L" keys." << endl;
     index_file.close();
     return;
 }
@@ -38,11 +38,11 @@ void build_index(vector<vector<wstring>> &csv){
     unordered_map<wstring, unordered_set<int>> index;
     
     // build n-gram index row by row
-    for(int row_pos=0; row_pos<csv.size(); row_pos++){
+    for(int row_pos=0; row_pos<int_size(csv); row_pos++){
         vector<wstring> &row = csv[row_pos];
         for(auto &col_pos:target_columns){
             wstring &col = row[col_pos];
-            for(int i=1; i<col.size()-_N_GRAM_LENGTH; i++){
+            for(int i=1; i<int_size(col)-_N_GRAM_LENGTH; i++){
                 wstring key = col.substr(i,_N_GRAM_LENGTH);
                 if(Utils::avalible_key(key, skip_wc))  index[key].emplace(row_pos);
             }

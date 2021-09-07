@@ -62,12 +62,12 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         results_raw.clear();
         results.clear();
         if(line == L"EXIT") break;
-        if(line.size()==0){
+        if(int_size(line)==0){
             wcout << _GUIDE_MESSAGE;
             continue;
         }
 
-        for(int i=0; i<line.size()-(_N_GRAM_LENGTH-1); i++){
+        for(int i=0; i<int_size(line)-(_N_GRAM_LENGTH-1); i++){
             wstring key = line.substr(i,_N_GRAM_LENGTH);
             if(index.count(key)>0 && Utils::avalible_key(key, skip_wc)){
                 for(auto value:index[key])  results_raw[value]++;
@@ -85,7 +85,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         output_search_result(records, results);
 
         if(silent_mode)     wcout.clear();
-        wcout << L"計 " << results.size();
+        wcout << L"計 " << int_size(results);
         wcout << L" 件の検索結果を「.\\search_result」にて確認できます。" << endl;
         if(silent_mode)     wcout.setstate(ios_base::failbit);
         

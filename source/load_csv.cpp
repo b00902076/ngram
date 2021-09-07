@@ -6,16 +6,16 @@ void generate_concatened_csv(vector<vector<wstring>> &csv){
     ofstream concatened_csv(_CSV_CONCATENED_PATH, ios_base::binary);
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     for(auto &row:csv){
-        for(int i=0; i<row.size(); i++){
-            concatened_csv << converter.to_bytes(row[i]) << (i==row.size()-1? '\n':',');
+        for(int i=0; i<int_size(row); i++){
+            concatened_csv << converter.to_bytes(row[i]) << (i==int_size(row)-1? '\n':',');
         }
     }
     #elif __linux__
     wofstream concatened_csv(_CSV_CONCATENED_PATH);
     concatened_csv.imbue(locale("C.UTF-8"));
     for(auto &row:csv){
-        for(int i=0; i<row.size(); i++){
-            concatened_csv << row[i] << (i==row.size()-1? L'\n':L',');
+        for(int i=0; i<int_size(row); i++){
+            concatened_csv << row[i] << (i==int_size(row)-1? L'\n':L',');
         }
     }
     #endif
@@ -28,7 +28,7 @@ void merge_prev_record(vector<vector<wstring>> &csv, vector<wstring> &record, ve
     for(auto &col:target_columns){
         prev = csv.back()[col];
         current = record[col];
-        csv.back()[col] = prev.substr(0, prev.size()-1) + current.substr(1, current.size()-1);
+        csv.back()[col] = prev.substr(0, int_size(prev)-1) + current.substr(1, int_size(current)-1);
     }
     return;
 }
@@ -59,14 +59,14 @@ void load_csv(vector<vector<wstring>> &csv){
     #endif
         record.clear();
         for(auto &wc:wline){
-            if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
-            if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==right_p)  between_parentheses = false;
+            if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
+            if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==right_p)  between_parentheses = false;
             
             if(wc==delim){
                 record.emplace_back(cell);
                 cell=L"";
-                if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3+1 && merge_mode)  break;
-                if(record.size()==_CSV_COLUMN_INDEX_ADDRESS_3 && between_parentheses) merge_mode=true;
+                if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3+1 && merge_mode)  break;
+                if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && between_parentheses) merge_mode=true;
             }
             else    cell += wc;
         }
@@ -82,7 +82,7 @@ void load_csv(vector<vector<wstring>> &csv){
     }
 
     generate_concatened_csv(csv);
-    wcout << L"Generated " << csv.size() << L" lines of concatened csv." <<endl;
+    wcout << L"Generated " << int_size(csv) << L" lines of concatened csv." <<endl;
     
     source_csv.close();
     return;
