@@ -46,15 +46,17 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     if(silent_mode)    wcout.setstate(ios_base::failbit);
     wcout << _GUIDE_MESSAGE;
     #if defined(_WIN32) || defined(__WIN32__)
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
     SetConsoleMode(hInput, ENABLE_ECHO_INPUT | ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT);
     wchar_t buffer[_MAX_BUFFER_LENGTH]={0};
     DWORD inputsRead;
     CONSOLE_READCONSOLE_CONTROL conReadControl;
     FlushConsoleInputBuffer(hInput);
+    wcout << L"test1"<<endl;
     while(ReadConsoleW(hInput, buffer, sizeof(buffer), &inputsRead, &conReadControl)){
-        line = wstring(buffer, inputsRead-2); // -2 for stripping L'\r' and L'\n'
+        wcout << L"test2"<<endl;
+        line = wstring(buffer, inputsRead-20); // -2 for stripping L'\r' and L'\n'
+        wcout << L"test3"<<endl;
 
     #elif __linux__
     while(getline(wcin, line)){
@@ -91,6 +93,28 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         
         wcout << _GUIDE_MESSAGE;
     }
+    #if defined(_WIN32) || defined(__WIN32__)
+    DWORD error_id = GetLastError();
+    if(error_id){
+        wstring_convert<codecvt_utf8<wchar_t>> converter;
+        LPSTR messageBuffer = nullptr;
+        ofstream error("error");
+
+        //Ask Win32 to give us the string version of that message ID.
+        //The parameters we pass in, tell Win32 to create the buffer that holds the message for us (because we don't yet know how long the message string will be).
+        size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+                                    NULL, error_id, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, NULL);
+        
+        //Copy the error message into a std::string.
+        std::string message(messageBuffer, size);
+        // wstring wmsg = converter.from_bytes(message.c_str());
+        wcout << L"error_code: " << error_id << endl;
+        // wcout << L"error: " << error_id << endl;
+        error << message << endl;
+        //Free the Win32's string's buffer.
+        LocalFree(messageBuffer);
+    }
+    #endif
     
     wcout.clear(); // reset failbit in silent-mode
     return;
