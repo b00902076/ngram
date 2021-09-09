@@ -69,7 +69,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
 
         for(int i=0; i<int_size(line)-(_N_GRAM_LENGTH-1); i++){
             wstring key = line.substr(i,_N_GRAM_LENGTH);
-            if(index.count(key)>0 && Utils::avalible_key(key, skip_wc)){
+            if(index.count(key)>0 && Utils::availableKey(key, skip_wc)){
                 for(auto value:index[key])  results_raw[value]++;
             }
         }
