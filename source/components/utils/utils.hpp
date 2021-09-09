@@ -2,5 +2,5 @@
 
 class Utils {
     public:
-    static bool avalible_key(wstring &key, unordered_set<wchar_t> &skip_wc);
+    static bool availableKey(wstring &key, unordered_set<wchar_t> &skip_wc);
 };
