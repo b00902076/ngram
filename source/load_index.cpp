@@ -4,9 +4,9 @@
 // load index file from the generated one
 void load_index(unordered_map<wstring, unordered_set<int>> &index){
     wstring wline;
-    Reader fileReader(_INDEX_PATH);
+    Reader FileReader(_INDEX_PATH);
     
-    while(fileReader.readLine(wline)){
+    while(FileReader.readLine(wline)){
         wstringstream line_stream(wline);
         wstring key, idx;
         getline(line_stream, key, L' ');

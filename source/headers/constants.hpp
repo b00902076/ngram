@@ -9,5 +9,5 @@
 #define _CSV_CONCATENED_PATH "data/KEN_ALL_CONCATENED.CSV"
 #define _INDEX_PATH "data/index_file"
 #define _SEARCH_RESULT_PATH "data/search_result"
-#define _GUIDE_MESSAGE L"検索キーワード（終了する場合はEXITを入力）："
-#define _MAX_BUFFER_LENGTH 1000
+#define _GUIDE_MESSAGE L"（EXITを入力して終了）検索キーワード："
+#define _MAX_BUFFER_LENGTH MAX_PATH

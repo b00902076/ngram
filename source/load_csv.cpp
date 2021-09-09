@@ -38,9 +38,9 @@ void load_csv(vector<vector<wstring>> &csv){
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring wline, cell=L"";
     vector<wstring> record;
-    Reader fileReader(_CSV_SOURCE_PATH);
+    Reader FileReader(_CSV_SOURCE_PATH);
 
-    while(fileReader.readLine(wline)){
+    while(FileReader.readLine(wline)){
         record.clear();
         for(auto &wc:wline){
             if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;

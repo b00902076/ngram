@@ -45,6 +45,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     if(silent_mode)    wcout.setstate(ios_base::failbit);
     wcout << _GUIDE_MESSAGE;
     #if defined(_WIN32) || defined(__WIN32__)
+    wstring_convert<codecvt_utf8<wchar_t>> converter;
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
     SetConsoleMode(hInput, ENABLE_ECHO_INPUT | ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT);
     wchar_t buffer[_MAX_BUFFER_LENGTH]={0};
@@ -84,7 +85,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
 
         if(silent_mode)     wcout.clear();
         wcout << L"計 " << int_size(results);
-        wcout << L" 件の検索結果を「.\\search_result」にて確認できます。" << endl;
+        wcout << L" 件の検索結果を「" << _SEARCH_RESULT_PATH << L"」にて確認できます。" << endl;
         if(silent_mode)     wcout.setstate(ios_base::failbit);
         
         wcout << _GUIDE_MESSAGE;
@@ -92,7 +93,6 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     #if defined(_WIN32) || defined(__WIN32__)
     DWORD error_id = GetLastError();
     if(error_id){
-        wstring_convert<codecvt_utf8<wchar_t>> converter;
         LPSTR messageBuffer = nullptr;
         ofstream error("error");
 
