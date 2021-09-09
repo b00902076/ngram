@@ -1,6 +1,4 @@
 #include "headers/load_csv.hpp"
-#include "headers/constants.hpp"
-#include "components/reader/reader.hpp"
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
     #if defined(_WIN32) || defined(__WIN32__)
