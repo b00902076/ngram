@@ -67,6 +67,5 @@ void load_csv(vector<vector<wstring>> &csv){
     generate_concatened_csv(csv);
     wcout << L"Generated " << int_size(csv) << L" lines of concatened csv." <<endl;
     
-    // source_csv.close();
     return;
 }
