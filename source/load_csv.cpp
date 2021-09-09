@@ -41,24 +41,6 @@ void load_csv(vector<vector<wstring>> &csv){
     vector<wstring> record;
     Reader fileReader(_CSV_SOURCE_PATH);
 
-    // #if defined(_WIN32) || defined(__WIN32__)
-    // ifstream source_csv(_CSV_SOURCE_PATH);
-    // // TODO: use ICU(or maybe boost) to convert utf8 string to wstring.
-    // // Note: The header <codecvt> is unrecommand since c++17 due to the ambiguous implementation,
-    // // and its improper error handling when reading file in unexpected code point.
-    // wstring_convert<codecvt_utf8<wchar_t>> converter;
-    // string line;
-    // #elif __linux__
-    // wifstream source_csv(_CSV_SOURCE_PATH);
-    // source_csv.imbue(locale("C.UTF-8"));
-    // #endif
-
-    // #if defined(_WIN32) || defined(__WIN32__)
-    // while(getline(source_csv, line)){
-    //     wline = converter.from_bytes(line.c_str());
-    // #elif __linux__
-    // while(getline(source_csv, wline)){
-    // #endif
     while(fileReader.readLine(wline)){
         record.clear();
         for(auto &wc:wline){
