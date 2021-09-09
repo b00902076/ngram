@@ -52,11 +52,8 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     DWORD inputsRead;
     CONSOLE_READCONSOLE_CONTROL conReadControl;
     FlushConsoleInputBuffer(hInput);
-    wcout << L"test1"<<endl;
     while(ReadConsoleW(hInput, buffer, sizeof(buffer), &inputsRead, &conReadControl)){
-        wcout << L"test2"<<endl;
-        line = wstring(buffer, inputsRead-20); // -2 for stripping L'\r' and L'\n'
-        wcout << L"test3"<<endl;
+        line = wstring(buffer, inputsRead-2); // -2 for stripping L'\r' and L'\n'
 
     #elif __linux__
     while(getline(wcin, line)){
