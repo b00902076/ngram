@@ -1,5 +1,6 @@
 #include "headers/load_csv.hpp"
 #include "headers/constants.hpp"
+#include "components/reader/reader.hpp"
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
     #if defined(_WIN32) || defined(__WIN32__)
@@ -38,25 +39,27 @@ void load_csv(vector<vector<wstring>> &csv){
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring wline, cell=L"";
     vector<wstring> record;
+    Reader fileReader(_CSV_SOURCE_PATH);
 
-    #if defined(_WIN32) || defined(__WIN32__)
-    ifstream source_csv(_CSV_SOURCE_PATH);
-    // TODO: use ICU(or maybe boost) to convert utf8 string to wstring.
-    // Note: The header <codecvt> is unrecommand since c++17 due to the ambiguous implementation,
-    // and its improper error handling when reading file in unexpected code point.
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    string line;
-    #elif __linux__
-    wifstream source_csv(_CSV_SOURCE_PATH);
-    source_csv.imbue(locale("C.UTF-8"));
-    #endif
+    // #if defined(_WIN32) || defined(__WIN32__)
+    // ifstream source_csv(_CSV_SOURCE_PATH);
+    // // TODO: use ICU(or maybe boost) to convert utf8 string to wstring.
+    // // Note: The header <codecvt> is unrecommand since c++17 due to the ambiguous implementation,
+    // // and its improper error handling when reading file in unexpected code point.
+    // wstring_convert<codecvt_utf8<wchar_t>> converter;
+    // string line;
+    // #elif __linux__
+    // wifstream source_csv(_CSV_SOURCE_PATH);
+    // source_csv.imbue(locale("C.UTF-8"));
+    // #endif
 
-    #if defined(_WIN32) || defined(__WIN32__)
-    while(getline(source_csv, line)){
-        wline = converter.from_bytes(line.c_str());
-    #elif __linux__
-    while(getline(source_csv, wline)){
-    #endif
+    // #if defined(_WIN32) || defined(__WIN32__)
+    // while(getline(source_csv, line)){
+    //     wline = converter.from_bytes(line.c_str());
+    // #elif __linux__
+    // while(getline(source_csv, wline)){
+    // #endif
+    while(fileReader.readLine(wline)){
         record.clear();
         for(auto &wc:wline){
             if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
@@ -84,6 +87,6 @@ void load_csv(vector<vector<wstring>> &csv){
     generate_concatened_csv(csv);
     wcout << L"Generated " << int_size(csv) << L" lines of concatened csv." <<endl;
     
-    source_csv.close();
+    // source_csv.close();
     return;
 }
