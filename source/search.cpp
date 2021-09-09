@@ -38,7 +38,6 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     bool sort_by_hits = (args.count("-s=h")>0 || args.count("--sort=hit")>0);
     bool sort_by_id = (args.count("-s=i")>0 || args.count("--sort=id")>0);
     wstring line;
-    string b_input;
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
     vector<pair<int,int>> results; // [{record_id, hit_count}, ...]
     unordered_set<wchar_t> skip_wc = {L'、', L'（', L'）', L'～', L' ', L'　'};
