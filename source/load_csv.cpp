@@ -1,25 +1,14 @@
 #include "headers/load_csv.hpp"
 #include "components/reader/reader.hpp"
+#include "components/writter/writter.hpp"
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofstream concatened_csv(_CSV_CONCATENED_PATH, ios_base::binary);
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
+    Writter FileWritter(_CSV_CONCATENED_PATH);
     for(auto &row:csv){
         for(int i=0; i<int_size(row); i++){
-            concatened_csv << converter.to_bytes(row[i]) << (i==int_size(row)-1? '\n':',');
+            FileWritter << row[i] << (i==int_size(row)-1? L"\n":L",");
         }
     }
-    #elif __linux__
-    wofstream concatened_csv(_CSV_CONCATENED_PATH);
-    concatened_csv.imbue(locale("C.UTF-8"));
-    for(auto &row:csv){
-        for(int i=0; i<int_size(row); i++){
-            concatened_csv << row[i] << (i==int_size(row)-1? L'\n':L',');
-        }
-    }
-    #endif
-    concatened_csv.close();
     return;
 }
 

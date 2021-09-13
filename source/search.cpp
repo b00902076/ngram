@@ -1,4 +1,5 @@
 #include "headers/search.hpp"
+#include "components/writter/writter.hpp"
 #include "components/utils/utils.hpp"
 
 auto sort_by_hits_comp = [](pair<int,int> &pa, pair<int,int> &pb){
@@ -15,20 +16,11 @@ auto sort_by_record_id_comp = [](pair<int,int> &pa, pair<int,int> &pb){
 };
 
 void output_search_result(vector<wstring> &records, vector<pair<int,int>> &results){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofstream search_result(_SEARCH_RESULT_PATH, ios_base::binary);
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    for(auto &[record_id, hit_count]: results)
-        search_result << converter.to_bytes(records[record_id]) << endl;
-
-    #elif __linux__
-    wofstream search_result(_SEARCH_RESULT_PATH, ios_base::binary);
-    search_result.imbue(locale("C.UTF-8"));
-    for(auto &[record_id, hit_count]: results)
-        search_result << records[record_id] << endl;
-    #endif
-
-    search_result.close();
+    Writter FileWritter(_SEARCH_RESULT_PATH);
+    for(auto &[record_id, hit_count]: results){
+        FileWritter << records[record_id] << L"\n";
+        FileWritter.flush();
+    }
     return;
 }
 
@@ -93,6 +85,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     #if defined(_WIN32) || defined(__WIN32__)
     DWORD error_id = GetLastError();
     if(error_id){
+        // TODO: winapi throws error when input L"EXIT" to quit program
         LPSTR messageBuffer = nullptr;
         ofstream error("error");
 

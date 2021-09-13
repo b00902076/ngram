@@ -1,34 +1,18 @@
 #include "headers/build_index.hpp"
+#include "components/writter/writter.hpp"
 #include "components/utils/utils.hpp"
 
 // store index content as file
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofstream index_file(_INDEX_PATH, ios_base::binary);
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    char space=' ', new_line='\n';
-    #elif __linux__
-    wofstream index_file(_INDEX_PATH, ios_base::binary);
-    index_file.imbue(locale("C.UTF-8"));
-    wchar_t space=L' ', new_line=L'\n';
-    #endif
+    Writter FileWritter(_INDEX_PATH);
 
     for(auto &[key, values]:index){
-        index_file
-        #if defined(_WIN32) || defined(__WIN32__)
-            << converter.to_bytes(key)
-        #elif __linux__
-            << key
-        #endif
-            << space;
-        int i=0;
-        for(auto &doc:values){
-            index_file << doc << (i==int_size(values)-1? new_line:space);
-            i++;
-        }
+        FileWritter << key;
+        for(auto &doc_num:values)   FileWritter << L" " << doc_num;
+        FileWritter.endl();
     }
-    wcout << L"Generated index file with " << int_size(index) << L" keys." << endl;
-    index_file.close();
+
+    wcout << L"Generated index file with " << int_size(index) << L" keys." << std::endl;
     return;
 }
 
