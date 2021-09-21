@@ -87,7 +87,7 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     if(error_id){
         // TODO: winapi throws error when input L"EXIT" to quit program
         LPSTR messageBuffer = nullptr;
-        ofstream error("error");
+        ofstream error(_ERROR_LOG_PATH);
 
         //Ask Win32 to give us the string version of that message ID.
         //The parameters we pass in, tell Win32 to create the buffer that holds the message for us (because we don't yet know how long the message string will be).

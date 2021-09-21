@@ -7,7 +7,8 @@
 #define _CSV_COLUMN_INDEX_ADDRESS_3 8
 #define _CSV_SOURCE_PATH "data/KEN_ALL.CSV"
 #define _CSV_CONCATENED_PATH "data/KEN_ALL_CONCATENED.CSV"
-#define _INDEX_PATH "data/index_file"
-#define _SEARCH_RESULT_PATH "data/search_result"
+#define _INDEX_PATH "output/index_file"
+#define _SEARCH_RESULT_PATH "output/search_result"
+#define _ERROR_LOG_PATH "output/error_log"
 #define _GUIDE_MESSAGE L"（EXITを入力して終了）検索キーワード："
 #define _MAX_BUFFER_LENGTH MAX_PATH

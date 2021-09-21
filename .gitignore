@@ -3,8 +3,10 @@
 *.csv
 *.CSV
 !KEN_ALL.CSV
+obj*
 *.o
 index_file
 search_result
 test*
 error*
+output*
