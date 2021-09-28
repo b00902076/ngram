@@ -1,41 +1,26 @@
 #include "headers/search.hpp"
-#include "components/writter/writter.hpp"
 #include "components/utils/utils.hpp"
-
-auto sort_by_hits_comp = [](pair<int,int> &pa, pair<int,int> &pb){
-    auto &[record_id_a, hit_count_a] = pa;
-    auto &[record_id_b, hit_count_b] = pb;
-    if(hit_count_a == hit_count_b)  return record_id_a < record_id_b;
-    return hit_count_a > hit_count_b;
-};
-
-auto sort_by_record_id_comp = [](pair<int,int> &pa, pair<int,int> &pb){
-    auto &[record_id_a, hit_count_a] = pa;
-    auto &[record_id_b, hit_count_b] = pb;
-    return record_id_a < record_id_b;
-};
+#include "components/logger/logger.hpp"
+#include "config/config.hpp"
 
 void output_search_result(vector<wstring> &records, vector<pair<int,int>> &results){
     Writter FileWritter(_SEARCH_RESULT_PATH);
-    for(auto &[record_id, hit_count]: results){
-        FileWritter << records[record_id] << L"\n";
-        FileWritter.flush();
+    for(auto &result:results){
+        int record_id = result.first;
+        FileWritter << records[record_id] << Writter::endl;
     }
     return;
 }
 
 void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records, unordered_set<string> &args){
-    // TODO: use class to handle configs
-    bool silent_mode = (args.count("-m=s")>0 || args.count("--mode=silent")>0);
-    bool sort_by_hits = (args.count("-s=h")>0 || args.count("--sort=hit")>0);
-    bool sort_by_id = (args.count("-s=i")>0 || args.count("--sort=id")>0);
-    wstring line;
+    Config config;
+    Logger logger(_LOG_PATH);
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
     vector<pair<int,int>> results; // [{record_id, hit_count}, ...]
     unordered_set<wchar_t> skip_wc = {L'、', L'（', L'）', L'～', L' ', L'　'};
+    wstring line;
 
-    if(silent_mode)    wcout.setstate(ios_base::failbit);
-    wcout << _GUIDE_MESSAGE;
+    logger << _GUIDE_MESSAGE;
     #if defined(_WIN32) || defined(__WIN32__)
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
@@ -52,9 +37,10 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
     #endif
         results_raw.clear();
         results.clear();
+        logger << line << Logger::endl;
         if(line == L"EXIT") break;
         if(int_size(line)==0){
-            wcout << _GUIDE_MESSAGE;
+            logger << _GUIDE_MESSAGE;
             continue;
         }
 
@@ -68,43 +54,43 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         for(auto &[line_num, hit_count]:results_raw)
             results.emplace_back(line_num, hit_count);
 
-        if(sort_by_hits||sort_by_id){
-            auto sort_method = sort_by_hits? sort_by_hits_comp : sort_by_record_id_comp;
-            sort(results.begin(), results.end(), sort_method);
+        if(config.sort_method > _SORT_METHOD_NULL){
+            auto compare = [&config](pair<int,int> &pa, pair<int,int> &pb){
+                auto &[record_id_a, hit_count_a] = pa;
+                auto &[record_id_b, hit_count_b] = pb;
+                if(config.sort_method & _SORT_METHOD_BY_HITS){
+                    if(hit_count_a == hit_count_b)  return record_id_a < record_id_b;
+                    return hit_count_a > hit_count_b;
+                } else {
+                    return record_id_a < record_id_b;
+                }
+            };
+            sort(results.begin(), results.end(), compare);
         }
 
         output_search_result(records, results);
 
-        if(silent_mode)     wcout.clear();
-        wcout << L"計 " << int_size(results);
-        wcout << L" 件の検索結果を「" << _SEARCH_RESULT_PATH << L"」にて確認できます。" << endl;
-        if(silent_mode)     wcout.setstate(ios_base::failbit);
-        
-        wcout << _GUIDE_MESSAGE;
+        logger << L"計 " << int_size(results);
+        logger << L" 件の検索結果を「" << _SEARCH_RESULT_PATH << L"」にて確認できます。" << Logger::endl;
+        logger << _GUIDE_MESSAGE;
     }
+
     #if defined(_WIN32) || defined(__WIN32__)
     DWORD error_id = GetLastError();
     if(error_id){
         // TODO: winapi throws error when input L"EXIT" to quit program
         LPSTR messageBuffer = nullptr;
-        ofstream error(_ERROR_LOG_PATH);
+        DWORD flags = FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS;
+        DWORD languageId = MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US);
+        Logger error(_ERROR_LOG_PATH, ios_base::binary);
 
-        //Ask Win32 to give us the string version of that message ID.
-        //The parameters we pass in, tell Win32 to create the buffer that holds the message for us (because we don't yet know how long the message string will be).
-        size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-                                    NULL, error_id, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, NULL);
-        
-        //Copy the error message into a std::string.
-        std::string message(messageBuffer, size);
-        // wstring wmsg = converter.from_bytes(message.c_str());
-        wcout << L"error_code: " << error_id << endl;
-        // wcout << L"error: " << error_id << endl;
-        error << message << endl;
-        //Free the Win32's string's buffer.
+        size_t size = FormatMessageA(flags, NULL, error_id, languageId, (LPSTR)&messageBuffer, 0, NULL);
+        string message(messageBuffer, size);
+        error << L"error_code: " << error_id << Logger::endl;
+        error << message << Logger::endl;
         LocalFree(messageBuffer);
     }
     #endif
     
-    wcout.clear(); // reset failbit in silent-mode
     return;
 }

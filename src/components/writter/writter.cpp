@@ -1,46 +1,61 @@
 #include "writter.hpp"
 
 Writter::Writter(const string& filename){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofs.open(filename, ios_base::binary);
-    #elif __linux__
-    wofs.open(filename, ios_base::binary);
-    wofs.imbue(locale("C.UTF-8"));
+    stream.open(filename, ios_base::binary);
+    #if __linux__
+    stream.imbue(locale("C.UTF-8"));
     #endif
 }
 
-Writter& Writter::operator<<(const wstring& ws){
+Writter::Writter(const string& filename, ios_base::openmode mode){
+    stream.open(filename, mode);
+    #if __linux__
+    stream.imbue(locale("C.UTF-8"));
+    #endif
+}
+
+Writter& Writter::operator<<(const int& input){
+    stream << input;
+    return *this;
+}
+
+Writter& Writter::operator<<(const unsigned long& input){
+    stream << input;
+    return *this;
+}
+
+Writter& Writter::operator<<(const string& input){
     #if defined(_WIN32) || defined(__WIN32__)
-    ofs << converter.to_bytes(ws);
+    stream << input;
     #elif __linux__
-    wofs << ws;
+    stream << converter.from_bytes(input.c_str());
     #endif
     return *this;
 }
 
-Writter& Writter::operator<<(const int& num){
+Writter& Writter::operator<<(const wstring& input){
     #if defined(_WIN32) || defined(__WIN32__)
-    ofs << num;
+    stream << converter.to_bytes(input);
     #elif __linux__
-    wofs << num;
+    stream << input;
     #endif
     return *this;
+}
+
+/**
+ *  @brief Interface for manipulators such as @c Writter::endl .
+ *  Acutal usage would be like "(Writter) << Writter::endl".
+ */
+Writter& Writter::operator<<(Writter& (*func)(Writter&)){
+    return func(*this);
 }
 
 void Writter::flush(){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofs.flush();
-    #elif __linux__
-    wofs.flush();
-    #endif
+    stream.flush();
     return;
 }
 
-Writter& Writter::endl(){
-    #if defined(_WIN32) || defined(__WIN32__)
-    ofs << std::endl;
-    #elif __linux__
-    wofs << std::endl;
-    #endif
-    return *this;
+Writter& Writter::endl(Writter& _self){
+    _self.stream << std::endl;
+    return _self;
 }

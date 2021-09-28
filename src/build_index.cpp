@@ -1,18 +1,19 @@
 #include "headers/build_index.hpp"
-#include "components/writter/writter.hpp"
+#include "components/logger/logger.hpp"
 #include "components/utils/utils.hpp"
 
 // store index content as file
 void generate_index_file(unordered_map<wstring, unordered_set<int>> &index){
     Writter FileWritter(_INDEX_PATH);
+    Logger logger(_LOG_PATH);
 
     for(auto &[key, values]:index){
         FileWritter << key;
         for(auto &doc_num:values)   FileWritter << L" " << doc_num;
-        FileWritter.endl();
+        FileWritter << Writter::endl;
     }
 
-    wcout << L"Generated index file with " << int_size(index) << L" keys." << std::endl;
+    logger << L"Generated index file with " << int_size(index) << L" keys." << Logger::endl;
     return;
 }
 

@@ -1,6 +1,6 @@
 #include "headers/load_csv.hpp"
 #include "components/reader/reader.hpp"
-#include "components/writter/writter.hpp"
+#include "components/logger/logger.hpp"
 
 void generate_concatened_csv(vector<vector<wstring>> &csv){
     Writter FileWritter(_CSV_CONCATENED_PATH);
@@ -28,6 +28,7 @@ void load_csv(vector<vector<wstring>> &csv){
     wstring wline, cell=L"";
     vector<wstring> record;
     Reader FileReader(_CSV_SOURCE_PATH);
+    Logger logger(_LOG_PATH);
 
     while(FileReader.readLine(wline)){
         record.clear();
@@ -55,7 +56,7 @@ void load_csv(vector<vector<wstring>> &csv){
     }
 
     generate_concatened_csv(csv);
-    wcout << L"Generated " << int_size(csv) << L" lines of concatened csv." <<endl;
+    logger << L"Generated " << int_size(csv) << L" lines of concatened csv." << Logger::endl;
     
     return;
 }

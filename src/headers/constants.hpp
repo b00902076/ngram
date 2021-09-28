@@ -9,6 +9,10 @@
 #define _CSV_CONCATENED_PATH "data/KEN_ALL_CONCATENED.CSV"
 #define _INDEX_PATH "output/index_file"
 #define _SEARCH_RESULT_PATH "output/search_result"
+#define _LOG_PATH "output/log"
 #define _ERROR_LOG_PATH "output/error_log"
 #define _GUIDE_MESSAGE L"（EXITを入力して終了）検索キーワード："
 #define _MAX_BUFFER_LENGTH MAX_PATH
+#define _SORT_METHOD_NULL 0
+#define _SORT_METHOD_BY_ID 1
+#define _SORT_METHOD_BY_HITS 2

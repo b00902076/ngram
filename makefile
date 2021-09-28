@@ -1,4 +1,4 @@
-CPPFLAGS = -std=c++17 -Wall -Wno-unused-variable
+CPPFLAGS = -std=c++17 -Wall
 TARGET = ngram
 .PHONY: clean test run
 
