@@ -1,5 +1,4 @@
 #include "config.hpp"
-#include "../headers/constants.hpp"
 
 /**
  *  true: stop putting runtime messages to stdout, but still put to log file.

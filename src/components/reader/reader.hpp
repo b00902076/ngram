@@ -1,3 +1,5 @@
+#ifndef NGRAM_COMPONENT_READER_H
+#define NGRAM_COMPONENT_READER_H
 #include "../../headers/common.hpp"
 
 class Reader {
@@ -22,3 +24,4 @@ class Reader {
 
     #endif
 };
+#endif

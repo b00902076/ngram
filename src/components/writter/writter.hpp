@@ -1,3 +1,5 @@
+#ifndef NGRAM_COMPONENT_WRITTER_H
+#define NGRAM_COMPONENT_WRITTER_H
 #include "../../headers/common.hpp"
 
 class Writter {
@@ -22,3 +24,4 @@ class Writter {
         wofstream stream;
         #endif
 };
+#endif

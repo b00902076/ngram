@@ -1,5 +1,8 @@
+#ifndef NGRAM_COMPONENT_LOGGER_H
+#define NGRAM_COMPONENT_LOGGER_H
 #include "../../headers/common.hpp"
 #include "../../components/writter/writter.hpp"
+#include "../../config/config.hpp"
 
 class Logger: public Writter {
     public:
@@ -16,3 +19,4 @@ class Logger: public Writter {
     private:
         bool console_output_utf8;
 };
+#endif

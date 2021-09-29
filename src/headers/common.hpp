@@ -1,3 +1,5 @@
+#ifndef NGRAM_HEADERS_COMMON_H
+#define NGRAM_HEADERS_COMMON_H
 #include <bits/stdc++.h>
 #include <fcntl.h>
 
@@ -9,4 +11,4 @@
 #define int_size(x) (int)(x).size()
 
 using namespace std;
-
+#endif

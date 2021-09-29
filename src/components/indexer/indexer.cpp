@@ -3,8 +3,6 @@ Indexer::Indexer(){
     // load source file and perform concatenation
     // TODO: seperate loading & concatenating part
     load_csv();
-    // load concatened records for quick output
-    load_record();
     // build index and store at local
     build_index();
     // load index file from the generated one
@@ -123,13 +121,4 @@ void Indexer::load_csv(){
     return;
 }
 
-void Indexer::load_record(){
-    wstring wline;
-    Reader FileReader(_CSV_CONCATENED_PATH);
-    Logger logger(_LOG_PATH);
-    while(FileReader.readLine(wline)){
-        records.emplace_back(wline);
-    }
-    logger << L"Loaded " << int_size(records) << L" records." << Logger::endl;
-    return;
-}
+

@@ -1,9 +1,24 @@
-#include "headers/search.hpp"
-#include "components/utils/utils.hpp"
-#include "components/logger/logger.hpp"
-#include "config/config.hpp"
+#include "searcher.hpp"
 
-void output_search_result(vector<wstring> &records, vector<pair<int,int>> &results){
+Searcher::Searcher(Indexer& indexer): indexer(indexer){
+    // load concatened records for quick output
+    loadRecord();
+    // perform search
+    search();
+}
+
+void Searcher::loadRecord(){
+    wstring wline;
+    Reader FileReader(_CSV_CONCATENED_PATH);
+    Logger logger(_LOG_PATH);
+    while(FileReader.readLine(wline)){
+        records.emplace_back(wline);
+    }
+    logger << L"Loaded " << int_size(records) << L" records." << Logger::endl;
+    return;
+}
+
+void Searcher::outputSearchResult(vector<pair<int,int>> &results){
     Writter FileWritter(_SEARCH_RESULT_PATH);
     for(auto &result:results){
         int record_id = result.first;
@@ -12,15 +27,15 @@ void output_search_result(vector<wstring> &records, vector<pair<int,int>> &resul
     return;
 }
 
-void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records){
+void Searcher::search(){
     Config config;
     Logger logger(_LOG_PATH);
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
     vector<pair<int,int>> results; // [{record_id, hit_count}, ...]
     unordered_set<wchar_t> skip_wc = {L'、', L'（', L'）', L'～', L' ', L'　'};
-    wstring line;
+    wstring line, guide_message=L"（EXITを入力して終了）検索キーワード：";
 
-    logger << _GUIDE_MESSAGE;
+    logger << guide_message;
     #if defined(_WIN32) || defined(__WIN32__)
     wstring_convert<codecvt_utf8<wchar_t>> converter;
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
@@ -40,14 +55,14 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
         logger << line << Logger::endl;
         if(line == L"EXIT") break;
         if(int_size(line)==0){
-            logger << _GUIDE_MESSAGE;
+            logger << guide_message;
             continue;
         }
 
         for(int i=0; i<int_size(line)-(_N_GRAM_LENGTH-1); i++){
             wstring key = line.substr(i,_N_GRAM_LENGTH);
-            if(index.count(key)>0 && Utils::availableKey(key, skip_wc)){
-                for(auto value:index[key])  results_raw[value]++;
+            if(indexer.index.count(key)>0 && Utils::availableKey(key, skip_wc)){
+                for(auto value:indexer.index[key])  results_raw[value]++;
             }
         }
 
@@ -68,11 +83,11 @@ void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &
             sort(results.begin(), results.end(), compare);
         }
 
-        output_search_result(records, results);
+        outputSearchResult(results);
 
         logger << L"計 " << int_size(results);
         logger << L" 件の検索結果を「" << _SEARCH_RESULT_PATH << L"」にて確認できます。" << Logger::endl;
-        logger << _GUIDE_MESSAGE;
+        logger << guide_message;
     }
 
     #if defined(_WIN32) || defined(__WIN32__)

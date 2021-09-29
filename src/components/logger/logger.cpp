@@ -1,5 +1,4 @@
 #include "logger.hpp"
-#include "../../config/config.hpp"
 
 ios_base::openmode default_mode = ios_base::binary | ios_base::app;
 Logger::Logger(const string& filename)

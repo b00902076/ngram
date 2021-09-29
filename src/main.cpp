@@ -5,11 +5,8 @@
 int main(int argc, char *argv[]){
     // TODO: add excuting time measure
     Initializer initializer(argc, argv);
-
     Indexer indexer;
-    
-    // search
-    search(indexer.index, indexer.records);
+    Searcher searcher(indexer);
 
     return 0;
 }
