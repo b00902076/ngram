@@ -12,7 +12,7 @@ void output_search_result(vector<wstring> &records, vector<pair<int,int>> &resul
     return;
 }
 
-void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records, unordered_set<string> &args){
+void search(unordered_map<wstring, unordered_set<int>> &index, vector<wstring> &records){
     Config config;
     Logger logger(_LOG_PATH);
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
