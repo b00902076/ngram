@@ -9,12 +9,12 @@
 class Searcher {
     public:
         Searcher(Indexer& indexer);
-        void loadRecord();
-        void outputSearchResult(vector<pair<int,int>> &results);
-        void search();
 
     private:
         vector<wstring> records;
         Indexer& indexer;
+        void loadRecord();
+        void outputSearchResult(vector<pair<int,int>> &results);
+        void search();
 };
 #endif
