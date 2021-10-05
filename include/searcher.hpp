@@ -1,10 +1,10 @@
-#ifndef NGRAM_COMPONENT_SEARCHER_H
-#define NGRAM_COMPONENT_SEARCHER_H
-#include "../../headers/common.hpp"
-#include "../../config/config.hpp"
-#include "../utils/utils.hpp"
-#include "../logger/logger.hpp"
-#include "../indexer/indexer.hpp"
+#ifndef NGRAM_INCLUDE_SEARCHER_H
+#define NGRAM_INCLUDE_SEARCHER_H
+#include "common.hpp"
+#include "indexer.hpp"
+#include "../lib/ngram/config.hpp"
+#include "../lib/ngram/utils.hpp"
+#include "../lib/ngram/logger.hpp"
 
 class Searcher {
     public:

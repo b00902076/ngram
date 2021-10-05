@@ -1,6 +1,6 @@
-#ifndef NGRAM_COMPONENT_WRITTER_H
-#define NGRAM_COMPONENT_WRITTER_H
-#include "../../headers/common.hpp"
+#ifndef NGRAM_LIB_NGRAM_WRITTER_H
+#define NGRAM_LIB_NGRAM_WRITTER_H
+#include "../../include/common.hpp"
 
 class Writter {
     public:

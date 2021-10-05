@@ -1,4 +1,4 @@
-#include "searcher.hpp"
+#include "../../include/searcher.hpp"
 #include "methods/load_record.cc"
 #include "methods/search.cc"
 

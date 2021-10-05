@@ -1,8 +1,8 @@
-#ifndef NGRAM_COMPONENT_LOGGER_H
-#define NGRAM_COMPONENT_LOGGER_H
-#include "../../headers/common.hpp"
-#include "../../components/writter/writter.hpp"
-#include "../../config/config.hpp"
+#ifndef NGRAM_LIB_NGRAM_LOGGER_H
+#define NGRAM_LIB_NGRAM_LOGGER_H
+#include "../../include/common.hpp"
+#include "writter.hpp"
+#include "config.hpp"
 
 class Logger: public Writter {
     public:

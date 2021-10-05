@@ -1,5 +1,5 @@
-#ifndef NGRAM_HEADERS_COMMON_H
-#define NGRAM_HEADERS_COMMON_H
+#ifndef NGRAM_INCLUDE_COMMON_H
+#define NGRAM_INCLUDE_COMMON_H
 #include <bits/stdc++.h>
 #include <fcntl.h>
 

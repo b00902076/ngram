@@ -1,4 +1,5 @@
-#include "../indexer.hpp"
+#include "../../../include/indexer.hpp"
+
 void Indexer::generateConcatenedCsv(){
     Writter FileWritter(_CSV_CONCATENED_PATH);
     for(auto &row:csv){

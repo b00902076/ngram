@@ -1,4 +1,4 @@
-#include "../searcher.hpp"
+#include "../../../include/searcher.hpp"
 
 void Searcher::loadRecord(){
     wstring wline;

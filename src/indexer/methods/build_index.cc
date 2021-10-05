@@ -1,4 +1,4 @@
-#include "../indexer.hpp"
+#include "../../../include/indexer.hpp"
 
 void Indexer::generateIndexFile(){
     Writter FileWritter(_INDEX_PATH);

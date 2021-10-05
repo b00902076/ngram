@@ -1,4 +1,4 @@
-#include "../searcher.hpp"
+#include "../../../include/searcher.hpp"
 
 void Searcher::outputSearchResult(vector<pair<int,int>> &results){
     Writter FileWritter(_SEARCH_RESULT_PATH);
