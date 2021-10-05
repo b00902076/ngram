@@ -1,4 +1,3 @@
-*.txt
 *.exe
 *.csv
 *.CSV
@@ -10,3 +9,4 @@ search_result
 test*
 error*
 output*
+build*

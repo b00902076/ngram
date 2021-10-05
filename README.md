@@ -1,35 +1,71 @@
 # ngram
 Japanese address search engine based on n-gram algorithm.<br>
-Cross-platform supported including Linux ans Windows.
+Cross-platform supported including Linux and Windows.
 
-## Requirements
+## Prerequisite
 - For Linux:
-  - Compiler: gcc 7.3.1 (Red-Hat)
-  - Build-automation Tool: GNU Make 3.82
+  - Compiler: gcc 7.3.1
+  - Build-automation Tool: CMake & GNU Make
+  - Openssl (for cmake dependency)
 - For Windows 10:
   - Compiler: gcc 10.3.0 (MSYS2) (*1)
-  - Build-automation Tool: GNU Make 4.3 (*2)
-  - Shell: Powershell 7.1.4
+  - Build-automation Tool: CMake & GNU Make (*2)
+  - Openssl (for cmake dependency)
 
-## How to compile & run
+## Setup Openssl on Linux
+CentOS, Amazon linux 2:
+```
+$ sudo yum install openssl-devel
+```
+Ubuntu:
+```
+$ sudo apt-get install libssl-dev
+```
+
+## Setup CMake on Linux
+Visit [CMake official site](https://cmake.org/download/) to get download link:
+```
+$ wget <download-link>
+$ tar zxvf <downloaded-tar-file>
+$ cd <cmake-dir>
+$ sudo ./bootstrap
+$ sudo make
+$ sudo make install
+```
+Clean up:
+```
+$ sudo rm -rf <cmake-dir> <downloaded-tar-file>
+```
+
+## How to Build
 On Linux:
 ```
+$ mkdir build
+$ cd build
+$ cmake ..
 $ make
-$ ./ngram [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
-Or `make run` for running without parameters.
-<br><br>
 On Windows:
 ```
+$ cmake -G "Unix Makefiles" -B "build" -S .
+$ cd build
 $ make
-$ ./ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
-Still, `make run` for running without parameters.<br>
-(or just double-click .exe file on the GUI)
+
+## How to Run
+Without passing parameters:
+```
+$ make run
+```
+Or `make run/fast` to avoid reproccessing.<br><br>
+With parameters:
+```
+$ ./bin/ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
+```
 
 ## How it works
 main algorithm: n-gram (n=2 by default)
 
 (*1) Mingw g++ compiler(8.x.x) has bug in `fcntl.h`, which causes fatal error during compiling. [[ref](https://sourceforge.net/p/mingw-w64/bugs/737/)]
 
-(*2) Setup by [chocolatey](https://chocolatey.org/install).
+(*2) GNU Make could setup by [chocolatey](https://chocolatey.org/install).
