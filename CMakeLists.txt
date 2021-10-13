@@ -20,10 +20,9 @@ make_directory(${CMAKE_BINARY_DIR}/output)
 
 include(src/CMakeLists.txt)
 
-# ###############################
+################################
 # googleTest
-# ###############################
-# add_subdirectory(gtest)
+################################
 include(FetchContent)
 FetchContent_Declare(
   googletest
