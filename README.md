@@ -12,6 +12,13 @@ Cross-platform supported including Linux and Windows.
   - Build-automation Tool: CMake & GNU Make (*2)
   - Openssl (for cmake dependency)
 
+## Setup Project
+```
+$ git submodule init
+$ git submodule update
+```
+(for setup dev-tools)
+
 ## Setup Openssl on Linux
 CentOS, Amazon linux 2:
 ```
