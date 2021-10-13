@@ -2,7 +2,6 @@
 *.csv
 *.CSV
 !KEN_ALL.CSV
-test*
 error*
 build
 build/*

@@ -7,7 +7,7 @@ list(APPEND lib_list ${indexer})
 list(APPEND lib_list ${searcher})
 add_library(${project_name}.so SHARED ${lib_list})
 
-# print_list(lib_list)
+# print_list("${lib_list}")
 
 add_custom_target(run
     COMMAND ${project_name}
