@@ -47,27 +47,30 @@ $ sudo rm -rf <cmake-dir> <downloaded-tar-file>
 ## How to Build
 On Linux:
 ```
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+$ cmake -B build -S .
+$ cmake --build build
 ```
 On Windows:
 ```
-$ cmake -G "Unix Makefiles" -B "build" -S .
-$ cd build
-$ make
+$ cmake -G "Unix Makefiles" -B build -S .
+$ cmake --build build
 ```
 
 ## How to Run
-Without passing parameters:
+By `make`:
 ```
 $ make run
 ```
 Or `make run/fast` to avoid reproccessing.<br><br>
-With parameters:
+By binary:
 ```
 $ ./bin/ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
+```
+
+## How to Test
+(under `<project>/build` directory)
+```
+$ ctest
 ```
 
 ## How it works
