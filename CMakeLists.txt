@@ -32,6 +32,8 @@ enable_testing()
 include_directories(gtest/include)
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# requires CMake 3.14+
 FetchContent_MakeAvailable(googletest)
 
 ################################
