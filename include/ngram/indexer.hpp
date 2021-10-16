@@ -1,10 +1,10 @@
 #ifndef NGRAM_INCLUDE_INDEXER_H
 #define NGRAM_INCLUDE_INDEXER_H
-#include "common.hpp"
-#include "../lib/ngram/reader.hpp"
-#include "../lib/ngram/logger.hpp"
-#include "../lib/ngram/writter.hpp"
-#include "../lib/ngram/utils.hpp"
+#include <ngram/common.hpp>
+#include "../../lib/ngram/reader.hpp"
+#include "../../lib/ngram/logger.hpp"
+#include "../../lib/ngram/writter.hpp"
+#include "../../lib/ngram/utils.hpp"
 
 class Indexer {
     public:

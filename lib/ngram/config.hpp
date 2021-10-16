@@ -1,7 +1,7 @@
 #ifndef NGRAM_LIB_NGRAM_CONFIG_H
 #define NGRAM_LIB_NGRAM_CONFIG_H
 #include <bits/stdc++.h>
-#include "../../include/constants.hpp"
+#include <ngram/constants.hpp>
 
 // TODO: maybe spilt config for indexer/searcher seperatedly?
 class Config {

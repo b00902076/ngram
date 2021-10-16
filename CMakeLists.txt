@@ -16,6 +16,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 make_directory(${CMAKE_BINARY_DIR}/data)
 file(COPY ${PROJECT_SOURCE_DIR}/data/${source_csv} DESTINATION ${CMAKE_BINARY_DIR}/data)
 make_directory(${CMAKE_BINARY_DIR}/output)
+include_directories(include)
 
 include(src/CMakeLists.txt)
 

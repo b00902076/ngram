@@ -1,4 +1,4 @@
-#include "../include/main.hpp"
+#include <ngram/main.hpp>
 #include <gtest/gtest.h>
 // #include "lib/ngram/config.hpp"
 // #include <lib/ngram/initializer.hpp>

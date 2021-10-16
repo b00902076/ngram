@@ -1,4 +1,4 @@
-#include "../../include/searcher.hpp"
+#include <ngram/searcher.hpp>
 #include "methods/load_record.cc"
 #include "methods/search.cc"
 
