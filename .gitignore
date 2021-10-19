@@ -5,3 +5,4 @@
 error*
 build
 build/*
+test_/*
