@@ -62,7 +62,7 @@ By `make`:
 $ make run
 ```
 Or `make run/fast` to avoid reproccessing.<br><br>
-By binary:
+From binary:
 ```
 $ ./bin/ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
