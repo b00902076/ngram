@@ -39,6 +39,7 @@ FetchContent_MakeAvailable(googletest)
 ################################
 # Unit Tests
 ################################
+include_directories(test/include)
 add_executable(ngram_test test/ngram_test.cpp)
 target_link_libraries(ngram_test gtest gtest_main ${project_name}.so)
 

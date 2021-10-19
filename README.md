@@ -72,6 +72,7 @@ $ ./bin/ngram.exe [-m=s|--mode=silent] [-s=h|--sort=hit] [-s=i|--sort=id]
 ```
 $ ctest
 ```
+On windows platform, messages output by gtest will be redirected to `build/test_result[w].log` after initializer execute `_setmode()`.
 
 ## How it works
 main algorithm: n-gram (n=2 by default)
