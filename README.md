@@ -4,13 +4,13 @@ Cross-platform supported including Linux and Windows.
 
 ## Prerequisite
 - For Linux:
-  - Compiler: gcc 7.3.1
-  - Build-automation Tool: CMake & GNU Make
-  - Openssl (for cmake dependency)
+  - Compiler: `gcc 7.3.1`
+  - Build-automation Tool: `CMake` & `GNU Make`
+  - `Openssl` (for `CMake` dependency)
 - For Windows 10:
-  - Compiler: gcc 10.3.0 (MSYS2) (*1)
-  - Build-automation Tool: CMake & GNU Make (*2)
-  - Openssl (for cmake dependency)
+  - Compiler: `gcc 10.3.0 (MSYS2)` (*1)
+  - Build-automation Tool: `CMake` & `GNU Make` (*2)
+  - `Openssl` (for `CMake` dependency)
 
 ## Setup Project
 ```
