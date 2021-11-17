@@ -7,7 +7,7 @@ Cross-platform supported including Linux and Windows.
   - Compiler: `gcc 7.3.1`
   - Build-automation Tool: `CMake` & `GNU Make`
   - `Openssl` (for `CMake` dependency)
-- For Windows 10:
+- For Windows 10(64-bit):
   - Compiler: `gcc 10.3.0 (MSYS2)` (*1)
   - Build-automation Tool: `CMake` & `GNU Make` (*2)
   - `Openssl` (for `CMake` dependency)

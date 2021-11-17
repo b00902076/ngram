@@ -1,6 +1,0 @@
-#ifndef NGRAM_TEST_INCLUDE_INITIALIZER_HPP
-#define NGRAM_TEST_INCLUDE_INITIALIZER_HPP
-#include <gtest/gtest.h>
-
-
-#endif

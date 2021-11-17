@@ -26,7 +26,7 @@ include(src/CMakeLists.txt)
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/refs/heads/master.zip
+  URL https://github.com/google/googletest/archive/refs/heads/main.zip
 )
 enable_testing()
 include_directories(gtest/include)
