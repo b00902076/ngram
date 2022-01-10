@@ -2,7 +2,8 @@
 
 void Indexer::loadIndex(){
     wstring wline;
-    Reader FileReader(_INDEX_PATH);
+    string file_path = Config::test_mode? _INDEX_PATH_TEST:_INDEX_PATH;
+    Reader FileReader(file_path);
     
     while(FileReader.readLine(wline)){
         wstringstream line_stream(wline);

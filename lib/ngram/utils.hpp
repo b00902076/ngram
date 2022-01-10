@@ -1,6 +1,6 @@
 #ifndef NGRAM_LIB_NGRAM_UTILS_H
 #define NGRAM_LIB_NGRAM_UTILS_H
-#include <ngram/common.hpp>
+#include "../../include/ngram/common.hpp"
 
 class Utils {
     public:

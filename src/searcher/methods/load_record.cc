@@ -2,8 +2,8 @@
 
 void Searcher::loadRecord(){
     wstring wline;
-    Reader FileReader(_CSV_CONCATENED_PATH);
-    Logger logger(_LOG_PATH);
+    string csv_path = Config::test_mode? _CSV_CONCATENED_PATH_TEST:_CSV_CONCATENED_PATH;
+    Reader FileReader(csv_path);
     while(FileReader.readLine(wline)){
         records.emplace_back(wline);
     }

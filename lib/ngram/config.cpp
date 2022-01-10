@@ -11,8 +11,14 @@ bool Config::mute_stdout = false;
  */
 int Config::sort_method = _SORT_METHOD_NULL;
 
+/**
+ * true if is in test mode(gTest runtime)
+*/
+bool Config::test_mode = false;
+
 void Config::resetAllConfigs() {
     mute_stdout = false;
     sort_method = _SORT_METHOD_NULL;
+    test_mode = false;
     return;
 }

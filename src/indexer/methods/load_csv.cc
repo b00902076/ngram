@@ -1,7 +1,8 @@
 #include <ngram/indexer.hpp>
 
 void Indexer::generateConcatenedCsv(){
-    Writter FileWritter(_CSV_CONCATENED_PATH);
+    string file_path = Config::test_mode? _CSV_CONCATENED_PATH_TEST:_CSV_CONCATENED_PATH;
+    Writter FileWritter(file_path);
     for(auto &row:csv){
         for(int i=0; i<int_size(row); i++){
             FileWritter << row[i] << (i==int_size(row)-1? L"\n":L",");
@@ -27,7 +28,8 @@ void Indexer::loadCsv(){
     wchar_t delim=L',', left_p=L'（', right_p=L'）';
     wstring wline, cell=L"";
     vector<wstring> record;
-    Reader FileReader(_CSV_SOURCE_PATH);
+    string file_path = Config::test_mode? _CSV_SOURCE_PATH_TEST:_CSV_SOURCE_PATH;
+    Reader FileReader(file_path);
 
     while(FileReader.readLine(wline)){
         record.clear();

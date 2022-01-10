@@ -3,7 +3,7 @@
 #include "methods/load_csv.cc"
 #include "methods/load_index.cc"
 
-Indexer::Indexer(): logger(_LOG_PATH){
+Indexer::Indexer(): logger(Config::test_mode? _LOG_PATH_TEST:_LOG_PATH) {
     // load source file and perform concatenation
     // TODO: seperate loading & concatenating part
     loadCsv();
