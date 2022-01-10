@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "-Wall")
-
 include(cmake/macros.cmake)
+
 # ###############################
 # ngram
 # ###############################
@@ -23,6 +23,7 @@ include(src/CMakeLists.txt)
 ################################
 # googleTest
 ################################
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -39,8 +40,12 @@ FetchContent_MakeAvailable(googletest)
 ################################
 # Unit Tests
 ################################
+
 include_directories(test/include)
-add_executable(ngram_test test/ngram_test.cpp)
+make_directory(${CMAKE_BINARY_DIR}/test/data)
+file(COPY ${PROJECT_SOURCE_DIR}/data/${source_csv} DESTINATION ${CMAKE_BINARY_DIR}/test/data)
+make_directory(${CMAKE_BINARY_DIR}/test/output)
+add_executable(ngram_test test/main.cpp)
 target_link_libraries(ngram_test gtest gtest_main ${project_name}.so)
 
 include(GoogleTest)

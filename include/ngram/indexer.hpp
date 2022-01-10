@@ -1,6 +1,6 @@
 #ifndef NGRAM_INCLUDE_INDEXER_H
 #define NGRAM_INCLUDE_INDEXER_H
-#include <ngram/common.hpp>
+#include "common.hpp"
 #include "../../lib/ngram/reader.hpp"
 #include "../../lib/ngram/logger.hpp"
 #include "../../lib/ngram/writter.hpp"
@@ -9,11 +9,10 @@
 class Indexer {
     public:
         Indexer();
+        vector<vector<wstring>> csv;
         unordered_map<wstring, unordered_set<int>> index;
         
     private:
-        vector<vector<wstring>> csv;
-        // TODO: name refactor
         void generateIndexFile();
         void buildIndex();
         void loadIndex();

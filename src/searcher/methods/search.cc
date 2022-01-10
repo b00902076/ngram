@@ -1,7 +1,8 @@
 #include <ngram/searcher.hpp>
 
 void Searcher::outputSearchResult(vector<pair<int,int>> &results){
-    Writter FileWritter(_SEARCH_RESULT_PATH);
+    string file_path = Config::test_mode? _SEARCH_RESULT_PATH_TEST:_SEARCH_RESULT_PATH;
+    Writter FileWritter(file_path);
     for(auto &result:results){
         int record_id = result.first;
         FileWritter << records[record_id] << Writter::endl;
@@ -10,8 +11,8 @@ void Searcher::outputSearchResult(vector<pair<int,int>> &results){
 }
 
 void Searcher::search(){
-    Config config;
-    Logger logger(_LOG_PATH);
+    string search_result_path = Config::test_mode? _SEARCH_RESULT_PATH_TEST:_SEARCH_RESULT_PATH;
+    string error_path = Config::test_mode? _ERROR_LOG_PATH_TEST:_ERROR_LOG_PATH;
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
     vector<pair<int,int>> results; // [{record_id, hit_count}, ...]
     unordered_set<wchar_t> skip_wc = {L'、', L'（', L'）', L'～', L' ', L'　'};
@@ -34,7 +35,6 @@ void Searcher::search(){
     #endif
         results_raw.clear();
         results.clear();
-        logger << line << Logger::endl;
         if(line == L"EXIT") break;
         if(int_size(line)==0){
             logger << guide_message;
@@ -51,11 +51,12 @@ void Searcher::search(){
         for(auto &[line_num, hit_count]:results_raw)
             results.emplace_back(line_num, hit_count);
 
-        if(config.sort_method > _SORT_METHOD_NULL){
-            auto compare = [&config](pair<int,int> &pa, pair<int,int> &pb){
+        if(Config::sort_method > _SORT_METHOD_NULL){
+            auto compare = [](pair<int,int> &pa, pair<int,int> &pb){
                 auto &[record_id_a, hit_count_a] = pa;
                 auto &[record_id_b, hit_count_b] = pb;
-                if(config.sort_method & _SORT_METHOD_BY_HITS){
+                if(Config::sort_method & _SORT_METHOD_BY_HITS){
+                    // In this mode, the record containing more DISTINCT key goes former
                     if(hit_count_a == hit_count_b)  return record_id_a < record_id_b;
                     return hit_count_a > hit_count_b;
                 } else {
@@ -68,7 +69,7 @@ void Searcher::search(){
         outputSearchResult(results);
 
         logger << L"計 " << int_size(results);
-        logger << L" 件の検索結果を「" << _SEARCH_RESULT_PATH << L"」にて確認できます。" << Logger::endl;
+        logger << L" 件の検索結果を「" << search_result_path << L"」にて確認できます。" << Logger::endl;
         logger << guide_message;
     }
 
@@ -79,7 +80,7 @@ void Searcher::search(){
         LPSTR messageBuffer = nullptr;
         DWORD flags = FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS;
         DWORD languageId = MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US);
-        Logger error(_ERROR_LOG_PATH, ios_base::binary);
+        Logger error(error_path, ios_base::binary);
 
         size_t size = FormatMessageA(flags, NULL, error_id, languageId, (LPSTR)&messageBuffer, 0, NULL);
         string message(messageBuffer, size);

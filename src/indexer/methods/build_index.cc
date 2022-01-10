@@ -1,7 +1,8 @@
 #include <ngram/indexer.hpp>
 
 void Indexer::generateIndexFile(){
-    Writter FileWritter(_INDEX_PATH);
+    string file_path = Config::test_mode? _INDEX_PATH_TEST:_INDEX_PATH;
+    Writter FileWritter(file_path);
 
     for(auto &[key, values]:index){
         FileWritter << key;
