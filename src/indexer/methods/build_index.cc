@@ -1,4 +1,4 @@
-#include <ngram/indexer.hpp>
+#include "../../../include/ngram/indexer.hpp"
 
 void Indexer::generateIndexFile(){
     string file_path = Config::test_mode? _INDEX_PATH_TEST:_INDEX_PATH;

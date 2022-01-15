@@ -9,16 +9,16 @@
 class Indexer {
     public:
         Indexer();
+        void loadCsv();
+        void buildIndex();
+        void loadIndex();
         vector<vector<wstring>> csv;
         unordered_map<wstring, unordered_set<int>> index;
         
     private:
         void generateIndexFile();
-        void buildIndex();
-        void loadIndex();
         void generateConcatenedCsv();
         void mergePrevRecord(vector<wstring> &record, vector<int> target_columns);
-        void loadCsv();
         Logger logger;
 };
 #endif

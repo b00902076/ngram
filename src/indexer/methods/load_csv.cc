@@ -1,4 +1,4 @@
-#include <ngram/indexer.hpp>
+#include "../../../include/ngram/indexer.hpp"
 
 void Indexer::generateConcatenedCsv(){
     string file_path = Config::test_mode? _CSV_CONCATENED_PATH_TEST:_CSV_CONCATENED_PATH;

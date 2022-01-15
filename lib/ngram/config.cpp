@@ -12,12 +12,12 @@ bool Config::mute_stdout = false;
 int Config::sort_method = _SORT_METHOD_NULL;
 
 /**
- * true if is in test mode(gTest runtime)
+ * set true if is in test mode(gTest runtime)
  */
 bool Config::test_mode = false;
 
 /**
- * set true if reading queries from s
+ * set true if reading queries from stdin
  */
 bool Config::fetch_query_from_stdin = false;
 
