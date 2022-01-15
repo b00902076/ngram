@@ -37,3 +37,11 @@ bool Reader::successfullyRead(){
     return wifs.rdstate() == ios_base::goodbit;
     #endif
 }
+
+ios_base::iostate Reader::getIostate(){
+    #if defined(_WIN32) || defined(__WIN32__)
+    return ifs.rdstate();
+    #elif __linux__
+    return wifs.rdstate();
+    #endif
+}

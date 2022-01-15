@@ -12,9 +12,7 @@ class Reader {
     #endif
     bool reachedEOF();
     bool successfullyRead();
-    ios_base::iostate getIostate(){
-        return ifs.rdstate();
-    }
+    ios_base::iostate getIostate();
 
     private:
     #if defined(_WIN32) || defined(__WIN32__)
