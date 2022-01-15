@@ -1,6 +1,5 @@
 #ifndef NGRAM_TEST_INCLUDE_FIXTURE_INDEXER_HPP
 #define NGRAM_TEST_INCLUDE_FIXTURE_INDEXER_HPP
-#include <bits/stdc++.h>
 #include <gtest/gtest.h>
 #include "../include/ngram/main.hpp"
 #include "../utils/utils.hpp"
