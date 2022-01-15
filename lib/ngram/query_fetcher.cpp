@@ -19,7 +19,7 @@ bool QueryFetcher::fetchOneQuery(wstring &wbuffer){
 
         #elif __linux__
         getline(wcin, wbuffer);
-        return wcin.good()==ios_base::goodbit;
+        return wcin.good();
         #endif
     } else { // get query from file
         readLine(wbuffer);
