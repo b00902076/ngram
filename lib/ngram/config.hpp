@@ -9,6 +9,7 @@ class Config {
         static bool test_mode;
         static bool mute_stdout;
         static int sort_method;
+        static bool fetch_query_from_stdin;
         void resetAllConfigs();
 };
 #endif

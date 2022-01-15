@@ -16,6 +16,7 @@ class Searcher {
         void loadRecord();
         void outputSearchResult(vector<pair<int,int>> &results);
         void search();
+        void handleErrorWIN32();
         Logger logger;
 };
 #endif

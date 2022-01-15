@@ -15,6 +15,8 @@
 #define _INDEX_PATH_TEST "test/output/index_file"
 #define _SEARCH_RESULT_PATH "output/search_result"
 #define _SEARCH_RESULT_PATH_TEST "test/output/search_result"
+#define _SEARCH_QUERY_PATH "data/queries"
+#define _SEARCH_QUERY_PATH_TEST "test/data/queries"
 #define _LOG_PATH "output/log"
 #define _LOG_PATH_TEST "test/output/log"
 #define _ERROR_LOG_PATH "output/error_log"

@@ -8,6 +8,7 @@ Initializer::Initializer(int argc, char *argv[]){
     config.mute_stdout = (args.count("-m=s")>0 || args.count("--mode=silent")>0);
     config.sort_method |= (args.count("-s=i")>0 || args.count("--sort=id")>0)? _SORT_METHOD_BY_ID:0;
     config.sort_method |= (args.count("-s=h")>0 || args.count("--sort=hit")>0)? _SORT_METHOD_BY_HITS:0;
+    config.fetch_query_from_stdin = (args.count("-q=stdin")>0);
 
     // stdio stuff
     #if defined(_WIN32) || defined(__WIN32__)

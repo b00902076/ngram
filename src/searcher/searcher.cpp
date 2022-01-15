@@ -1,4 +1,5 @@
-#include <ngram/searcher.hpp>
+#include "../../include/ngram/searcher.hpp"
+#include "../../lib/ngram/query_fetcher.hpp"
 #include "methods/load_record.cc"
 #include "methods/search.cc"
 

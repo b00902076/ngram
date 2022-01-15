@@ -13,12 +13,18 @@ int Config::sort_method = _SORT_METHOD_NULL;
 
 /**
  * true if is in test mode(gTest runtime)
-*/
+ */
 bool Config::test_mode = false;
 
+/**
+ * set true if reading queries from s
+ */
+bool Config::fetch_query_from_stdin = false;
+
 void Config::resetAllConfigs() {
+    test_mode = false;
     mute_stdout = false;
     sort_method = _SORT_METHOD_NULL;
-    test_mode = false;
+    fetch_query_from_stdin = false;
     return;
 }

@@ -1,5 +1,5 @@
-#ifndef NGRAM_LIB_NGRAM_READER_H
-#define NGRAM_LIB_NGRAM_READER_H
+#ifndef NGRAM_LIB_NGRAM_READER_HPP
+#define NGRAM_LIB_NGRAM_READER_HPP
 #include "../../include/ngram/common.hpp"
 
 class Reader {
@@ -10,6 +10,11 @@ class Reader {
     #elif __linux__
     wifstream& readLine(wstring& wline);
     #endif
+    bool reachedEOF();
+    bool successfullyRead();
+    ios_base::iostate getIostate(){
+        return ifs.rdstate();
+    }
 
     private:
     #if defined(_WIN32) || defined(__WIN32__)

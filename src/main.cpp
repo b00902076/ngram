@@ -6,6 +6,7 @@ int main(int argc, char *argv[]){
     // TODO: add excuting time measure
     Initializer initializer(argc, argv);
     Indexer indexer;
+    // TODO: refactor: searcher/indexer should be independent
     Searcher searcher(indexer);
 
     return 0;
