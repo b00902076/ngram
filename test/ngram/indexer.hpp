@@ -6,6 +6,10 @@
 // class indexer
 TEST_F(IndexerTest, AllFeatures){
     Indexer indexer;
+    indexer.loadCsv();
+    indexer.buildIndex();
+    indexer.loadIndex();
+
     // test concatened csv
     EXPECT_EQ(indexer.csv.size(), 124223) << L"CSV(runtime variable) is not correct";
     ifstream csv(_CSV_CONCATENED_PATH_TEST);
