@@ -11,6 +11,7 @@ void Searcher::outputSearchResult(vector<pair<int,int>> &results){
     return;
 }
 
+#if defined(_WIN32) || defined(__WIN32__)
 void Searcher::handleErrorWIN32(){
     DWORD error_id = GetLastError();
     string error_path = Config::test_mode? _ERROR_LOG_PATH_TEST:_ERROR_LOG_PATH;
@@ -28,6 +29,7 @@ void Searcher::handleErrorWIN32(){
         LocalFree(messageBuffer);
     }
 }
+#endif
 
 void Searcher::search(){
     string search_result_path = Config::test_mode? _SEARCH_RESULT_PATH_TEST:_SEARCH_RESULT_PATH;
