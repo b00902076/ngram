@@ -1,13 +1,13 @@
 #include "writter.hpp"
 
-Writter::Writter(const string& filename){
+Writter::Writter(const string& filename): filename(filename){
     stream.open(filename, ios_base::binary);
     #if __linux__
     stream.imbue(locale("C.UTF-8"));
     #endif
 }
 
-Writter::Writter(const string& filename, ios_base::openmode mode){
+Writter::Writter(const string& filename, ios_base::openmode mode): filename(filename){
     stream.open(filename, mode);
     #if __linux__
     stream.imbue(locale("C.UTF-8"));
@@ -58,4 +58,8 @@ void Writter::flush(){
 Writter& Writter::endl(Writter& _self){
     _self.stream << std::endl;
     return _self;
+}
+
+string Writter::getFilename(){
+    return filename;
 }

@@ -13,9 +13,11 @@ class Writter {
         Writter& operator<<(Writter& (*func)(Writter&));
         void flush();
         static Writter& endl(Writter&);
+        string getFilename();
 
     protected:
         wstring_convert<codecvt_utf8<wchar_t>> converter;
+        string filename;
         
         #if defined(_WIN32) || defined(__WIN32__)
         ofstream stream;
