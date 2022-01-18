@@ -29,9 +29,9 @@ void Indexer::loadCsv(){
     wstring wline, cell=L"";
     vector<wstring> record;
     string file_path = Config::test_mode? _CSV_SOURCE_PATH_TEST:_CSV_SOURCE_PATH;
-    Reader FileReader(file_path);
+    Reader file_reader(file_path);
 
-    while(FileReader.readLine(wline)){
+    while(file_reader.readLine(wline)){
         record.clear();
         for(auto &wc:wline){
             if(int_size(record)==_CSV_COLUMN_INDEX_ADDRESS_3 && wc==left_p)  between_parentheses = true;
