@@ -1,7 +1,7 @@
-#ifndef NGRAM_TEST_INCLUDE_FIXTURE_INDEXER_HPP
-#define NGRAM_TEST_INCLUDE_FIXTURE_INDEXER_HPP
+#ifndef NGRAM_TEST_INCLUDE_FIXTURES_INDEXER_HPP
+#define NGRAM_TEST_INCLUDE_FIXTURES_INDEXER_HPP
 #include <gtest/gtest.h>
-#include "../include/ngram/main.hpp"
+#include "../../../include/ngram/main.hpp"
 #include "../utils/utils.hpp"
 class IndexerTest: public testing::Test, public ngramTesting::Utils {
     protected:

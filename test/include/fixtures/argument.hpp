@@ -1,5 +1,5 @@
-#ifndef NGRAM_TEST_INCLUDE_ARGUMENT_HPP
-#define NGRAM_TEST_INCLUDE_ARGUMENT_HPP
+#ifndef NGRAM_TEST_INCLUDE_FIXTURES_ARGUMENT_HPP
+#define NGRAM_TEST_INCLUDE_FIXTURES_ARGUMENT_HPP
 #include <bits/stdc++.h>
 #include <gtest/gtest.h>
 #include "../utils/utils.hpp"
