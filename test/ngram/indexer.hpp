@@ -4,7 +4,8 @@
 #include "../../include/ngram/indexer.hpp"
 #include "../include/fixtures/indexer.hpp"
 // class indexer
-TEST_F(IndexerTest, AllFeatures){
+TEST_F(IndexerTest, Overall){
+    wcerr << L"mute_stdout: " << (Config::mute_stdout) << endl;
     Indexer indexer;
     indexer.loadCsv();
     indexer.buildIndex();

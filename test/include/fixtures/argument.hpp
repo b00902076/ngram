@@ -20,13 +20,10 @@ class ArgumentTest: public testing::Test, public ngramTesting::Utils {
                 arg.argv[1] = flag;
                 single_flag_arg_set.push_back(arg);
             }
-
+            redirectTestLog(this);
         }
         void TearDown() override {
-            #if defined(_WIN32) || defined(__WIN32__)
-            // redirect log stream(stdout) to handle output messages after Initializer executing _setmode()
-            redirectTestLog(this);
-            #endif
+            handleErrorOutput(this);
         }
 
         Argument no_flag_arg;
