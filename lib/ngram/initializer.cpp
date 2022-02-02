@@ -18,5 +18,6 @@ Initializer::Initializer(int argc, char *argv[]){
     ios_base::sync_with_stdio(false);
     wcin.imbue(locale("C.UTF-8"));
     wcout.imbue(locale("C.UTF-8"));
+    wcerr.imbue(locale("C.UTF-8"));
     #endif
 }

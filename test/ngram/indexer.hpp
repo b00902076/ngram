@@ -5,7 +5,6 @@
 #include "../include/fixtures/indexer.hpp"
 // class indexer
 TEST_F(IndexerTest, Overall){
-    wcerr << L"mute_stdout: " << (Config::mute_stdout) << endl;
     Indexer indexer;
     indexer.loadCsv();
     indexer.buildIndex();
@@ -15,7 +14,7 @@ TEST_F(IndexerTest, Overall){
     EXPECT_EQ(indexer.csv.size(), 124223) << L"CSV(runtime variable) is not correct";
     ifstream csv(_CSV_CONCATENED_PATH_TEST);
     int csv_line_cnt = std::count(std::istreambuf_iterator<char>(csv), std::istreambuf_iterator<char>(), '\n');
-    EXPECT_EQ(csv_line_cnt, 124223) << L"CSV doesn't have expected lines.";
+    EXPECT_EQ(csv_line_cnt, 1242230) << L"CSV doesn't have expected lines.";
     csv.close();
 
     // test index file

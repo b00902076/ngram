@@ -10,8 +10,8 @@ class IndexerTest: public testing::Test, public ngramTesting::Utils {
         Config config;
         config.test_mode = true;
         char *argv[1] = {(char *)"dummy.exe"};
-        redirectTestLog(this);
         Initializer standard_mode(sizeof(argv)/sizeof(char *), argv);
+        redirectTestLog(this);
     }
     void TearDown() override {
         handleErrorOutput(this);
