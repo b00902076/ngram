@@ -1,6 +1,7 @@
 #include "../../../include/ngram/searcher.hpp"
 
 void Searcher::outputSearchResult(vector<pair<int,int>> &results){
+    Writter result_writter(Config::test_mode? _SEARCH_RESULT_PATH_TEST:_SEARCH_RESULT_PATH);
     for(auto &result:results){
         int record_id = result.first;
         result_writter << records[record_id] << Writter::endl;
@@ -37,9 +38,9 @@ void Searcher::handleErrorWIN32(){
 int Searcher::proccessOneQuery(wstring &query, Indexer &indexer){
     unordered_map<int,int> results_raw; // [{record_id, hit_count}, ...]
     vector<pair<int,int>> results; // [{record_id, hit_count}, ...]
-    
+
     // Echoes input when not listening by stdin, just for the readability of output
-    if(!Config::fetch_query_from_stdin) wcout << query << endl;
+    if(!Config::fetch_query_from_stdin) logger << query << Logger::endl;
 
     // For empty input line, but not EOF
     if(int_size(query)==0){
@@ -83,7 +84,7 @@ void Searcher::search(){
     wstring query;
     logger << guide_message;
     while(query_fetcher.fetchOneQuery(query)){
-        if(query == L"EXIT") break;
+        if(query == L"EXIT" && !Config::test_mode) break;
         proccessOneQuery(query, indexer);
     }
 

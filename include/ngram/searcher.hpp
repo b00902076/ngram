@@ -21,7 +21,6 @@ class Searcher {
         void handleErrorWIN32();
         Logger logger, error_logger;
         QueryFetcher query_fetcher;
-        Writter result_writter;
         unordered_set<wchar_t> skip_wc;
         wstring guide_message;
 };
