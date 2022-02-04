@@ -44,9 +44,9 @@ FetchContent_MakeAvailable(googletest)
 ################################
 
 include_directories(test/include)
-make_directory(${CMAKE_BINARY_DIR}/test/data)
 file(COPY ${PROJECT_SOURCE_DIR}/data/${source_csv} DESTINATION ${CMAKE_BINARY_DIR}/test/data)
 file(COPY ${PROJECT_SOURCE_DIR}/data/${query_filename} DESTINATION ${CMAKE_BINARY_DIR}/test/data)
+file(COPY ${PROJECT_SOURCE_DIR}/test/data DESTINATION ${CMAKE_BINARY_DIR}/test)
 make_directory(${CMAKE_BINARY_DIR}/test/output)
 make_directory(${CMAKE_BINARY_DIR}/test/test_results)
 make_directory(${CMAKE_BINARY_DIR}/test/test_results/linux)
