@@ -2,9 +2,9 @@
 #define NGRAM_TEST_NGRAM_INITIALIZER_HPP
 #include <gtest/gtest.h>
 #include "../../lib/ngram/initializer.hpp"
-#include "../include/fixtures/argument.hpp"
+#include "../include/fixtures/initializer.hpp"
 // class Initializer
-TEST_F(ArgumentTest, ConfigInitialization){
+TEST_F(InitializerTest, ConfigInitialization){
     Config config;
     Initializer no_flag_init(no_flag_arg.argc, no_flag_arg.argv);
     EXPECT_EQ(config.mute_stdout, false) << L"config(mute_stdout) incorrect";

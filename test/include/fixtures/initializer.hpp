@@ -1,5 +1,5 @@
-#ifndef NGRAM_TEST_INCLUDE_FIXTURES_ARGUMENT_HPP
-#define NGRAM_TEST_INCLUDE_FIXTURES_ARGUMENT_HPP
+#ifndef NGRAM_TEST_INCLUDE_FIXTURES_INITIALIZER_HPP
+#define NGRAM_TEST_INCLUDE_FIXTURES_INITIALIZER_HPP
 #include <bits/stdc++.h>
 #include <gtest/gtest.h>
 #include "../utils/utils.hpp"
@@ -8,7 +8,7 @@ class Argument {
         int argc;
         char *argv[2]; // 2 for testing one flag
 };
-class ArgumentTest: public testing::Test, public ngramTesting::Utils {
+class InitializerTest: public testing::Test, public ngramTesting::Utils {
     protected:
         void SetUp() override {
             no_flag_arg.argc = 1;
