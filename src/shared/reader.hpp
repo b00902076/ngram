@@ -1,6 +1,6 @@
-#ifndef NGRAM_LIB_NGRAM_READER_HPP
-#define NGRAM_LIB_NGRAM_READER_HPP
-#include "../../include/ngram/common.hpp"
+#ifndef NGRAM_SRC_SHARED_READER_HPP
+#define NGRAM_SRC_SHARED_READER_HPP
+#include "../common/common.hpp"
 
 class Reader {
     public:

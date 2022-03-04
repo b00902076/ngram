@@ -1,7 +1,7 @@
 #ifndef NGRAM_TEST_NGRAM_INITIALIZER_HPP
 #define NGRAM_TEST_NGRAM_INITIALIZER_HPP
 #include <gtest/gtest.h>
-#include "../../lib/ngram/initializer.hpp"
+#include "../../src/shared/initializer.hpp"
 #include "../include/fixtures/initializer.hpp"
 // class Initializer
 TEST_F(InitializerTest, ConfigInitialization){

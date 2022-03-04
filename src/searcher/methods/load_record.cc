@@ -1,4 +1,4 @@
-#include "../../../include/ngram/searcher.hpp"
+#include "../searcher.hpp"
 
 void Searcher::loadRecord(){
     wstring wline;

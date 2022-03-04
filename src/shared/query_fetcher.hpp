@@ -1,6 +1,6 @@
-#ifndef NGRAM_LIB_NGRAM_QUERY_FETCHER_HPP
-#define NGRAM_LIB_NGRAM_QUERY_FETCHER_HPP
-#include "../../include/ngram/common.hpp"
+#ifndef NGRAM_SRC_SHARED_QUERY_FETCHER_HPP
+#define NGRAM_SRC_SHARED_QUERY_FETCHER_HPP
+#include "../common/common.hpp"
 #include "reader.hpp"
 #include "config.hpp"
 class QueryFetcher: public Reader {

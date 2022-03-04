@@ -1,4 +1,4 @@
-#include "../../../include/ngram/searcher.hpp"
+#include "../searcher.hpp"
 
 void Searcher::outputSearchResult(vector<pair<int,int>> &results){
     Writter result_writter(Config::test_mode? _SEARCH_RESULT_PATH_TEST:_SEARCH_RESULT_PATH);

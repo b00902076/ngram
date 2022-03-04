@@ -1,5 +1,5 @@
 set(lib_list "")
-get_all_cpps(lib_ngram ${PROJECT_SOURCE_DIR}/lib/ngram)
+get_all_cpps(lib_ngram ${PROJECT_SOURCE_DIR}/src/shared)
 get_all_cpps(indexer ${PROJECT_SOURCE_DIR}/src/indexer)
 get_all_cpps(searcher ${PROJECT_SOURCE_DIR}/src/searcher)
 list(APPEND lib_list ${lib_ngram})

@@ -1,4 +1,4 @@
-#include "../include/ngram/main.hpp"
+#include "main.hpp"
 // constrains:
 // - source file with utf-8 encoding, LF as new line
 

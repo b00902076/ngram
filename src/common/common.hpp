@@ -1,5 +1,5 @@
-#ifndef NGRAM_INCLUDE_COMMON_H
-#define NGRAM_INCLUDE_COMMON_H
+#ifndef NGRAM_SRC_COMMON_COMMON_HPP
+#define NGRAM_SRC_COMMON_COMMON_HPP
 #include <bits/stdc++.h>
 #include <fcntl.h>
 

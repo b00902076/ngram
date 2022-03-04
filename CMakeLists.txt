@@ -18,7 +18,7 @@ make_directory(${CMAKE_BINARY_DIR}/data)
 file(COPY ${PROJECT_SOURCE_DIR}/data/${source_csv} DESTINATION ${CMAKE_BINARY_DIR}/data)
 file(COPY ${PROJECT_SOURCE_DIR}/data/${query_filename} DESTINATION ${CMAKE_BINARY_DIR}/data)
 make_directory(${CMAKE_BINARY_DIR}/output)
-include_directories(include)
+# include_directories(include)
 
 include(src/CMakeLists.txt)
 

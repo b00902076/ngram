@@ -1,7 +1,7 @@
 #ifndef NGRAM_TEST_NGRAM_CONFIG_HPP
 #define NGRAM_TEST_NGRAM_CONFIG_HPP
 #include <gtest/gtest.h>
-#include "../../include/ngram/common.hpp"
+#include "../../src/common/common.hpp"
 #include "../include/fixtures/config.hpp"
 // class Config
 TEST_F(ConfigTest, DefaultValue){

@@ -1,4 +1,4 @@
-#include "../../../include/ngram/indexer.hpp"
+#include "../indexer.hpp"
 
 void Indexer::loadIndex(){
     wstring wline;

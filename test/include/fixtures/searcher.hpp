@@ -1,7 +1,7 @@
 #ifndef NGRAM_TEST_INCLUDE_FIXTURES_SEARCHER_HPP
 #define NGRAM_TEST_INCLUDE_FIXTURES_SEARCHER_HPP
 #include <gtest/gtest.h>
-#include "../../../include/ngram/main.hpp"
+#include "../../../src/main.hpp"
 #include "../utils/utils.hpp"
 class SearcherTest: public testing::Test, public ngramTesting::Utils {
     protected:

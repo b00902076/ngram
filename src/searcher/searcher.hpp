@@ -1,11 +1,11 @@
-#ifndef NGRAM_INCLUDE_SEARCHER_H
-#define NGRAM_INCLUDE_SEARCHER_H
-#include "common.hpp"
-#include "indexer.hpp"
-#include "../../lib/ngram/config.hpp"
-#include "../../lib/ngram/utils.hpp"
-#include "../../lib/ngram/logger.hpp"
-#include "../../lib/ngram/query_fetcher.hpp"
+#ifndef NGRAM_SRC_SEARCHER_SEARCHER_HPP
+#define NGRAM_SRC_SEARCHER_SEARCHER_HPP
+#include "../common/common.hpp"
+#include "../indexer/indexer.hpp"
+#include "../shared/config.hpp"
+#include "../shared/utils.hpp"
+#include "../shared/logger.hpp"
+#include "../shared/query_fetcher.hpp"
 
 class Searcher {
     public:

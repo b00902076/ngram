@@ -1,7 +1,7 @@
 #ifndef NGRAM_TEST_NGRAM_UTILS_HPP
 #define NGRAM_TEST_NGRAM_UTILS_HPP
 #include <gtest/gtest.h>
-#include "../../lib/ngram/utils.hpp"
+#include "../../src/shared/utils.hpp"
 #include "../include/fixtures/utils_available_key.hpp"
 // class Utils
 TEST(UtilsTest, availableKey){

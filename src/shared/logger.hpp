@@ -1,6 +1,6 @@
-#ifndef NGRAM_LIB_NGRAM_LOGGER_H
-#define NGRAM_LIB_NGRAM_LOGGER_H
-#include "../../include/ngram/common.hpp"
+#ifndef NGRAM_SRC_SHARED_LOGGER_HPP
+#define NGRAM_SRC_SHARED_LOGGER_HPP
+#include "../common/common.hpp"
 #include "writter.hpp"
 #include "config.hpp"
 

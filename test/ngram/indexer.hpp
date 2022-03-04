@@ -1,7 +1,7 @@
 #ifndef NGRAM_TEST_NGRAM_INDEXER_HPP
 #define NGRAM_TEST_NGRAM_INDEXER_HPP
 #include <gtest/gtest.h>
-#include "../../include/ngram/indexer.hpp"
+#include "../../src/indexer/indexer.hpp"
 #include "../include/fixtures/indexer.hpp"
 // class indexer
 TEST_F(IndexerTest, Overall){

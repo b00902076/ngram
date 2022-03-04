@@ -1,8 +1,8 @@
 #ifndef NGRAM_TEST_NGRAM_SEARCHER_HPP
 #define NGRAM_TEST_NGRAM_SEARCHER_HPP
 #include <gtest/gtest.h>
-#include "../../include/ngram/indexer.hpp"
-#include "../../include/ngram/searcher.hpp"
+#include "../../src/indexer/indexer.hpp"
+#include "../../src/searcher/searcher.hpp"
 #include "../include/fixtures/searcher.hpp"
 #include "../include/utils/constants.hpp"
 
