@@ -48,7 +48,7 @@ $ sudo rm -rf <cmake-dir> <downloaded-tar-file>
 On Linux:
 ```
 $ cmake -B build -S .
-$ cd build && cmake --build build
+$ cd build && cmake --build .
 ```
 On Windows:
 ```
